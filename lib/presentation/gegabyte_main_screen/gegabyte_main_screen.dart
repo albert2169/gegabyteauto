@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:gegabyteauto/presentation/widgets/custom_app_bar.dart';
-import 'package:gegabyteauto/presentation/widgets/section_item.dart';
-import 'package:gegabyteauto/presentation/widgets/app_navigation.dart';
-import 'package:gegabyteauto/presentation/brands/brand_screen.dart';
+import 'package:gegabyteauto/presentation/gegabyte_main_screen/widgets/custom_app_bar.dart';
+import 'package:gegabyteauto/presentation/gegabyte_main_screen/widgets/section_item.dart';
+import 'package:gegabyteauto/presentation/gegabyte_main_screen/widgets/app_navigation.dart';
+import 'package:gegabyteauto/presentation/brands_new_screen/brand_screen.dart';
 
 class GegabyteMainScreen extends StatefulWidget {
   const GegabyteMainScreen({super.key});

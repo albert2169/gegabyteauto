@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:gegabyteauto/presentation/models/car_model.dart';
+import 'package:gegabyteauto/models/car_brand_view_model.dart';
 
 class BrandItem extends StatelessWidget {
-  final CarModel model;
-  const BrandItem({super.key, required this.model});
+  final CarBrandViewModel carBrandViewModel;
+  const BrandItem({super.key, required this.carBrandViewModel});
 
   @override
   Widget build(BuildContext context) {
@@ -14,10 +14,10 @@ class BrandItem extends StatelessWidget {
           child: Row(
             children: [
               Image.asset(
-                model.assetPath,
+                carBrandViewModel.logoAssetPath,
                 width: 50,
                 height: 50,
-                fit: BoxFit.fill,
+                fit: BoxFit.fitWidth,
               ),
               const SizedBox(width: 30),
               Expanded(
@@ -25,7 +25,7 @@ class BrandItem extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      model.name,
+                      carBrandViewModel.name,
                       style: const TextStyle(color: Colors.white, fontSize: 16),
                     ),
                   ],
@@ -36,7 +36,10 @@ class BrandItem extends StatelessWidget {
         ),
         Padding(
           padding: const EdgeInsets.only(top: 5),
-          child: Divider(color: Colors.white, thickness: 0.1,),
+          child: Divider(
+            color: Colors.white,
+            thickness: 0.1,
+          ),
         )
       ],
     );

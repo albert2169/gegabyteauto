@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gegabyteauto/presentation/gegabyte_main_screen.dart';
-import 'package:gegabyteauto/presentation/widgets/gegabyte_bottom_nav_bar.dart';
+import 'package:gegabyteauto/presentation/gegabyte_main_screen/gegabyte_main_screen.dart';
+import 'package:gegabyteauto/presentation/gegabyte_main_screen/widgets/gegabyte_bottom_nav_bar.dart';
 
 /// Shell containing a nested navigator and persistent bottom bar.
 class AppShell extends StatefulWidget {
