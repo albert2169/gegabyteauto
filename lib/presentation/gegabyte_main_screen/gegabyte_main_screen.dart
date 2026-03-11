@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gegabyteauto/presentation/all_cars_section/all_cars_main_screen.dart';
 import 'package:gegabyteauto/presentation/gegabyte_main_screen/widgets/custom_app_bar.dart';
 import 'package:gegabyteauto/presentation/gegabyte_main_screen/widgets/section_item.dart';
 import 'package:gegabyteauto/presentation/gegabyte_main_screen/widgets/app_navigation.dart';
@@ -37,9 +38,11 @@ class _GegabyteMainScreenState extends State<GegabyteMainScreen> {
             ),
             const SizedBox(height: 20),
             SectionItem(
-              icon: Icons.car_rental_sharp,
+              icon: Icons.list,
               title: 'See All',
-              onTap: () {},
+              onTap: () {
+                Nav.push(AllCarsMainScreen());
+              },
             ),
             const SizedBox(height: 20),
             SectionItem(
