@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'app_colors.dart';
 
 abstract final class AppTextStyles {
-  // Display
   static const TextStyle displayLarge = TextStyle(
     fontSize: 36,
     fontWeight: FontWeight.w700,
@@ -19,7 +18,6 @@ abstract final class AppTextStyles {
     height: 1.2,
   );
 
-  // Headlines
   static const TextStyle headlineLarge = TextStyle(
     fontSize: 24,
     fontWeight: FontWeight.w700,
@@ -40,7 +38,6 @@ abstract final class AppTextStyles {
     color: AppColors.textPrimary,
   );
 
-  // Body
   static const TextStyle bodyLarge = TextStyle(
     fontSize: 16,
     fontWeight: FontWeight.w400,

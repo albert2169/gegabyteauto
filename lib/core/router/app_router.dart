@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:gegabyteauto/models/car_brand_view_model.dart';
 import 'package:gegabyteauto/presentation/view_models/car_view_model.dart';
 // Screens
-import 'package:gegabyteauto/presentation/auth/screens/auth_screen.dart';
+import 'package:gegabyteauto/presentation/auth/auth_screen/auth_screen.dart';
 import 'package:gegabyteauto/presentation/shell/screens/shell_screen.dart';
 import 'package:gegabyteauto/presentation/home/screens/home_screen.dart';
 import 'package:gegabyteauto/presentation/all_cars/screens/all_cars_screen.dart';
