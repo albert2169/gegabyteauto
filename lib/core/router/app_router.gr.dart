@@ -42,8 +42,6 @@ class AuthRoute extends PageRouteInfo<void> {
   );
 }
 
-/// generated route for
-/// [BrandsScreen]
 class BrandsRoute extends PageRouteInfo<void> {
   const BrandsRoute({List<PageRouteInfo>? children})
     : super(BrandsRoute.name, initialChildren: children);

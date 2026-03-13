@@ -16,7 +16,7 @@ class AuthForgetButton extends StatelessWidget {
           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
         ),
         child: Text(
-          'Վերականգնել հասանելիությունը',
+          'Վերականգնել Գաղտնաբառը',
           style: AppTextStyles.accent.copyWith(fontSize: 13),
         ),
       ),

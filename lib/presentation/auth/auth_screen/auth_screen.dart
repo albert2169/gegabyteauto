@@ -1,4 +1,3 @@
-import 'dart:ui';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -7,13 +6,13 @@ import 'package:gegabyteauto/core/router/app_router.dart';
 import 'package:gegabyteauto/core/theme/app_colors.dart';
 import 'package:gegabyteauto/core/theme/app_text_styles.dart';
 import 'package:gegabyteauto/presentation/auth/auth_screen/widgets/auth_animated_background.dart';
-import 'package:gegabyteauto/presentation/auth/auth_screen/widgets/auth_logo.dart';
 import 'package:gegabyteauto/presentation/auth/auth_screen/widgets/auth_register_link_section.dart';
 import 'package:gegabyteauto/presentation/auth/auth_screen/widgets/auth_sign_in_form_card.dart';
 import 'package:gegabyteauto/presentation/auth/auth_screen/widgets/auth_welcome_back_section.dart';
 import 'package:gegabyteauto/presentation/auth/bloc/auth_bloc.dart';
 import 'package:gegabyteauto/presentation/auth/bloc/auth_event.dart';
 import 'package:gegabyteauto/presentation/auth/bloc/auth_state.dart';
+import 'package:gegabyteauto/presentation/commons/widgets/app_logo.dart';
 
 @RoutePage()
 class AuthScreen extends StatelessWidget {
@@ -114,7 +113,7 @@ class _AuthViewState extends State<_AuthView>
                         child: Column(
                           children: [
                             const SizedBox(height: 40),
-                            AuthLogo(),
+                            AppLogo(),
                             const SizedBox(height: 40),
                             AuthWelcomeBackSection(),
                             const SizedBox(height: 40),
