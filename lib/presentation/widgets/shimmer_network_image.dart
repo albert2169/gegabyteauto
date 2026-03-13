@@ -82,8 +82,6 @@ class _ShimmerPlaceholder extends StatelessWidget {
     );
   }
 }
-
-/// A full-width shimmer card placeholder for list loading
 class ShimmerCarCard extends StatelessWidget {
   const ShimmerCarCard({super.key});
 

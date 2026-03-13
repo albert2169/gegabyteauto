@@ -1,28 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:gegabyteauto/presentation/gegabyte_main_screen/widgets/app_navigation.dart';
+import 'package:gegabyteauto/core/di/injection.dart';
+import 'package:gegabyteauto/core/router/app_router.dart';
+import 'package:gegabyteauto/core/theme/app_theme.dart';
 
 void main() {
-  runApp(const MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  configureDependencies();
+  runApp(GegabyteAutoApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class GegabyteAutoApp extends StatelessWidget {
+  GegabyteAutoApp({super.key});
+
+  final _appRouter = AppRouter();
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        appBarTheme: const AppBarTheme(
-          backgroundColor: Colors.black,
-          foregroundColor: Colors.white,
-          elevation: 0,
-          scrolledUnderElevation: 0,
-          surfaceTintColor: Colors.transparent,
-        ),
-      ),
-      title: 'Flutter Demo',
+    return MaterialApp.router(
+      title: 'Gegabyte Auto',
       debugShowCheckedModeBanner: false,
-      home: const AppShell(),
+      theme: AppTheme.dark,
+      routerConfig: _appRouter.config(),
     );
   }
 }

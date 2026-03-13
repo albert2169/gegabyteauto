@@ -21,8 +21,6 @@ class _AllCarsMainScreenState extends State<AllCarsMainScreen> {
 
   final TextEditingController _searchController = TextEditingController();
   bool _showFilters = false;
-
-  // Filter state
   String? _selectedBrand;
   String? _selectedGearBox;
   String? _selectedEngine;
@@ -73,7 +71,6 @@ class _AllCarsMainScreenState extends State<AllCarsMainScreen> {
       _filteredCars = _allCars.where((car) {
         final info = car.singleCarInfoViewModel;
 
-        // Search text
         if (query.isNotEmpty) {
           final searchable =
               '${info.brand} ${info.model} ${car.seria} ${info.color} ${info.engine}'
@@ -81,28 +78,23 @@ class _AllCarsMainScreenState extends State<AllCarsMainScreen> {
           if (!searchable.contains(query)) return false;
         }
 
-        // Brand filter
         if (_selectedBrand != null && info.brand != _selectedBrand) {
           return false;
         }
 
-        // GearBox filter
         if (_selectedGearBox != null && info.gearBox != _selectedGearBox) {
           return false;
         }
 
-        // Engine filter
         if (_selectedEngine != null && info.engine != _selectedEngine) {
           return false;
         }
 
-        // Price filter
         final price = _parsePriceValue(info.price);
         if (price < _priceRange.start || price > _priceRange.end) {
           return false;
         }
 
-        // Year filter
         final year = _parseYear(info.year);
         if (year < _yearRange.start || year > _yearRange.end) {
           return false;
@@ -147,16 +139,9 @@ class _AllCarsMainScreenState extends State<AllCarsMainScreen> {
       ),
       body: Column(
         children: [
-          // Search bar
           _buildSearchBar(),
-
-          // Filter chips & panel
           if (_showFilters) _buildFilterPanel(),
-
-          // Active filter chips
           if (_hasActiveFilters) _buildActiveFilterChips(),
-
-          // Results count
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
             child: Row(
@@ -184,8 +169,6 @@ class _AllCarsMainScreenState extends State<AllCarsMainScreen> {
               ],
             ),
           ),
-
-          // Car list / grid / reels
           Expanded(
             child: AnimatedSwitcher(
               duration: const Duration(milliseconds: 300),
@@ -304,7 +287,6 @@ class _AllCarsMainScreenState extends State<AllCarsMainScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Brand dropdown
             _filterDropdown(
               label: 'Brand',
               value: _selectedBrand,
@@ -315,8 +297,6 @@ class _AllCarsMainScreenState extends State<AllCarsMainScreen> {
               },
             ),
             const SizedBox(height: 12),
-
-            // Gearbox + Engine row
             Row(
               children: [
                 Expanded(
@@ -345,8 +325,6 @@ class _AllCarsMainScreenState extends State<AllCarsMainScreen> {
               ],
             ),
             const SizedBox(height: 16),
-
-            // Price range
             _buildRangeSlider(
               label: 'Price',
               values: _priceRange,
@@ -359,8 +337,6 @@ class _AllCarsMainScreenState extends State<AllCarsMainScreen> {
               },
             ),
             const SizedBox(height: 12),
-
-            // Year range
             _buildRangeSlider(
               label: 'Year',
               values: _yearRange,

@@ -40,7 +40,6 @@ class _SingleCarScreenState extends State<SingleCarScreen> {
       backgroundColor: Colors.black,
       body: CustomScrollView(
         slivers: [
-          // Image carousel as SliverAppBar
           SliverAppBar(
             expandedHeight: MediaQuery.of(context).size.height * 0.45,
             pinned: true,
@@ -89,7 +88,6 @@ class _SingleCarScreenState extends State<SingleCarScreen> {
               background: Stack(
                 fit: StackFit.expand,
                 children: [
-                  // Image PageView
                   PageView.builder(
                     controller: _pageController,
                     itemCount: images.length,
@@ -125,8 +123,6 @@ class _SingleCarScreenState extends State<SingleCarScreen> {
                       );
                     },
                   ),
-
-                  // Bottom gradient
                   Positioned(
                     bottom: 0,
                     left: 0,
@@ -145,8 +141,6 @@ class _SingleCarScreenState extends State<SingleCarScreen> {
                       ),
                     ),
                   ),
-
-                  // Dot indicators
                   Positioned(
                     bottom: 14,
                     left: 0,
@@ -202,8 +196,6 @@ class _SingleCarScreenState extends State<SingleCarScreen> {
               ),
             ),
           ),
-
-          // Content
           SliverToBoxAdapter(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -211,8 +203,6 @@ class _SingleCarScreenState extends State<SingleCarScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(height: 8),
-
-                  // Brand + model + seria
                   Row(
                     children: [
                       ClipRRect(
@@ -261,8 +251,6 @@ class _SingleCarScreenState extends State<SingleCarScreen> {
                   ),
 
                   const SizedBox(height: 16),
-
-                  // Price
                   Container(
                     width: double.infinity,
                     padding: const EdgeInsets.symmetric(
@@ -291,15 +279,10 @@ class _SingleCarScreenState extends State<SingleCarScreen> {
                   ),
 
                   const SizedBox(height: 24),
-
-                  // Quick specs grid
                   _sectionTitle('Specifications'),
                   const SizedBox(height: 12),
                   _specsGrid(info),
-
                   const SizedBox(height: 28),
-
-                  // Description
                   _sectionTitle('Description'),
                   const SizedBox(height: 12),
                   Text(
@@ -310,17 +293,11 @@ class _SingleCarScreenState extends State<SingleCarScreen> {
                       height: 1.6,
                     ),
                   ),
-
                   const SizedBox(height: 28),
-
-                  // Owner info
                   _sectionTitle('Owner Details'),
                   const SizedBox(height: 12),
                   _ownerCard(owner),
-
                   const SizedBox(height: 32),
-
-                  // Contact button
                   SizedBox(
                     width: double.infinity,
                     height: 52,
