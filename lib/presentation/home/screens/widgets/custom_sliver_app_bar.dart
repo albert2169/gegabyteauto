@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gegabyteauto/core/theme/app_colors.dart';
-import 'package:gegabyteauto/presentation/commons/widgets/app_logo.dart';
+import 'package:gegabyteauto/commons/widgets/app_logo.dart';
 
 class CustomSliverAppBar extends StatelessWidget {
   const CustomSliverAppBar({super.key});

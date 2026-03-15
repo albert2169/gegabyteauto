@@ -12,7 +12,7 @@ import 'package:gegabyteauto/presentation/auth/auth_screen/widgets/auth_welcome_
 import 'package:gegabyteauto/presentation/auth/bloc/auth_bloc.dart';
 import 'package:gegabyteauto/presentation/auth/bloc/auth_event.dart';
 import 'package:gegabyteauto/presentation/auth/bloc/auth_state.dart';
-import 'package:gegabyteauto/presentation/commons/widgets/app_logo.dart';
+import 'package:gegabyteauto/commons/widgets/app_logo.dart';
 
 @RoutePage()
 class AuthScreen extends StatelessWidget {

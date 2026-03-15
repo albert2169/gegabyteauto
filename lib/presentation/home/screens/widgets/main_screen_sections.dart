@@ -28,7 +28,7 @@ class MainScreenSections extends StatelessWidget {
         MainScreenSectionItem(
           iconData: Icons.list_rounded,
           title: 'Դիտիր բոլորը',
-          subtitle: '50+ մեքենաներ',
+          subtitle: 'Բազմաթիվ մեքենաներ',
           color: const Color(0xFF1A2A2A),
           accentColor: const Color(0xFF4ECDC4),
           onTap: () => context.pushRoute(const AllCarsRoute()),
