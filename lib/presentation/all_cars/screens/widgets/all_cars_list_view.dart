@@ -5,9 +5,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gegabyteauto/core/router/app_router.dart';
 import 'package:gegabyteauto/core/theme/app_colors.dart';
 import 'package:gegabyteauto/core/theme/app_text_styles.dart';
+import 'package:gegabyteauto/models/car_view_model.dart';
 import 'package:gegabyteauto/presentation/all_cars/bloc/cars_bloc.dart';
 import 'package:gegabyteauto/presentation/all_cars/bloc/cars_event.dart';
-import 'package:gegabyteauto/presentation/view_models/car_view_model.dart';
 import 'package:shimmer/shimmer.dart';
 
 class AllCarsListView extends StatelessWidget {

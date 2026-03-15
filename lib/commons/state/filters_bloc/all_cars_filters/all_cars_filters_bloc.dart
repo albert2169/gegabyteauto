@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gegabyteauto/presentation/view_models/car_view_model.dart';
+import 'package:gegabyteauto/models/car_view_model.dart';
 
 import 'all_cars_filters_event.dart';
 import 'all_cars_filters_state.dart';

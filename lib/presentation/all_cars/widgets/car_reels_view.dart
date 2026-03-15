@@ -3,7 +3,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:gegabyteauto/core/router/app_router.dart';
 import 'package:gegabyteauto/core/theme/app_colors.dart';
-import 'package:gegabyteauto/presentation/view_models/car_view_model.dart';
+import 'package:gegabyteauto/models/car_view_model.dart';
 import 'package:shimmer/shimmer.dart';
 
 class CarReelsView extends StatelessWidget {

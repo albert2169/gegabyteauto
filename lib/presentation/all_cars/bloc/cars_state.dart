@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:gegabyteauto/presentation/view_models/car_view_model.dart';
+import 'package:gegabyteauto/models/car_view_model.dart';
 
 abstract class CarsState extends Equatable {
   const CarsState();

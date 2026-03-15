@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 // Route argument types
 import 'package:gegabyteauto/models/car_brand_view_model.dart';
-import 'package:gegabyteauto/presentation/view_models/car_view_model.dart';
+import 'package:gegabyteauto/models/car_view_model.dart';
 // Screens
 import 'package:gegabyteauto/presentation/auth/auth_screen/auth_screen.dart';
 import 'package:gegabyteauto/presentation/shell/screens/shell_screen.dart';
@@ -11,7 +11,7 @@ import 'package:gegabyteauto/presentation/all_cars/screens/all_cars_screen.dart'
 import 'package:gegabyteauto/presentation/favorites/screens/favorites_screen.dart';
 import 'package:gegabyteauto/presentation/profile/screens/profile_screen.dart';
 import 'package:gegabyteauto/presentation/brands/screens/brands_screen.dart';
-import 'package:gegabyteauto/presentation/car_models/screens/car_models_screen.dart';
+import 'package:gegabyteauto/presentation/car_models_screen/car_models_main_screen.dart';
 import 'package:gegabyteauto/presentation/single_car/screens/single_car_screen.dart';
 
 part 'app_router.gr.dart';

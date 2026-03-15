@@ -17,6 +17,7 @@ class AllCarsAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       backgroundColor: AppColors.background,
       elevation: 0,
+      centerTitle: false,
       title: Text('Ընտրիր մեքենա', style: AppTextStyles.headlineMedium),
       actions: const [
         _ViewModeButton(

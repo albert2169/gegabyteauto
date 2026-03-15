@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:gegabyteauto/presentation/view_models/car_view_model.dart';
+import 'package:gegabyteauto/models/car_view_model.dart';
 
 enum AllCarsViewMode { list, grid, reels }
 

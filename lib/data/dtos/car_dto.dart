@@ -1,7 +1,7 @@
 import 'package:gegabyteauto/data/dtos/car_image_dto.dart';
 import 'package:gegabyteauto/data/dtos/car_owner_info_dto.dart';
-import 'package:gegabyteauto/presentation/view_models/car_view_model.dart';
-import 'package:gegabyteauto/presentation/view_models/single_car_info_view_model.dart';
+import 'package:gegabyteauto/models/car_view_model.dart';
+import 'package:gegabyteauto/models/single_car_info_view_model.dart';
 
 class CarDto {
   final String id;

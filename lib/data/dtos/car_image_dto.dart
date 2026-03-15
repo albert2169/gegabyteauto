@@ -1,4 +1,5 @@
-import 'package:gegabyteauto/presentation/view_models/car_image_view_model.dart';
+
+import 'package:gegabyteauto/models/car_image_view_model.dart';
 
 class CarImageDto {
   final bool isInterior;
@@ -26,7 +27,7 @@ class CarImageDto {
       };
 
   CarImageViewModel toViewModel() => CarImageViewModel(
-        isInterior: isInterior,
+        isInterier: isInterior,
         assetImagePath: assetImagePath,
         networkImageUrl: networkImageUrl,
       );

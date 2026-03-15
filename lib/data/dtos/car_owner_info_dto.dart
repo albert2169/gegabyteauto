@@ -1,4 +1,5 @@
-import 'package:gegabyteauto/presentation/view_models/car_owner_info_view_model.dart';
+
+import 'package:gegabyteauto/models/car_owner_info_view_model.dart';
 
 class CarOwnerInfoDto {
   final String name;

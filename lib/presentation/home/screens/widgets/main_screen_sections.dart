@@ -31,7 +31,7 @@ class MainScreenSections extends StatelessWidget {
           subtitle: 'Բազմաթիվ մեքենաներ',
           color: const Color(0xFF1A2A2A),
           accentColor: const Color(0xFF4ECDC4),
-          onTap: () => context.pushRoute(const AllCarsRoute()),
+          onTap: () => AutoTabsRouter.of(context).setActiveIndex(1),
         ),
         MainScreenSectionItem(
           iconData: Icons.sell_rounded,
