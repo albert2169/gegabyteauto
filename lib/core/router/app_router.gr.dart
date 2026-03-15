@@ -42,6 +42,8 @@ class AuthRoute extends PageRouteInfo<void> {
   );
 }
 
+/// generated route for
+/// [BrandsScreen]
 class BrandsRoute extends PageRouteInfo<void> {
   const BrandsRoute({List<PageRouteInfo>? children})
     : super(BrandsRoute.name, initialChildren: children);
@@ -107,6 +109,43 @@ class FavoritesRoute extends PageRouteInfo<void> {
       return const FavoritesScreen();
     },
   );
+}
+
+/// generated route for
+/// [FiltersScreen]
+class FiltersRoute extends PageRouteInfo<FiltersRouteArgs> {
+  FiltersRoute({
+    Key? key,
+    required List<CarViewModel> cars,
+    List<PageRouteInfo>? children,
+  }) : super(
+         FiltersRoute.name,
+         args: FiltersRouteArgs(key: key, cars: cars),
+         initialChildren: children,
+       );
+
+  static const String name = 'FiltersRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<FiltersRouteArgs>();
+      return FiltersScreen(key: args.key, cars: args.cars);
+    },
+  );
+}
+
+class FiltersRouteArgs {
+  const FiltersRouteArgs({this.key, required this.cars});
+
+  final Key? key;
+
+  final List<CarViewModel> cars;
+
+  @override
+  String toString() {
+    return 'FiltersRouteArgs{key: $key, cars: $cars}';
+  }
 }
 
 /// generated route for

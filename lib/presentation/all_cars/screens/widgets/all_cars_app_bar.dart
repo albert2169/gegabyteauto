@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gegabyteauto/core/theme/app_colors.dart';
 import 'package:gegabyteauto/core/theme/app_text_styles.dart';
-import 'package:gegabyteauto/commons/state/filters_bloc/all_cars_filters/all_cars_filters_bloc.dart';
-import 'package:gegabyteauto/commons/state/filters_bloc/all_cars_filters/all_cars_filters_event.dart';
-import 'package:gegabyteauto/commons/state/filters_bloc/all_cars_filters/all_cars_filters_state.dart';
+import 'package:gegabyteauto/presentation/all_cars/bloc/cars_bloc.dart';
+import 'package:gegabyteauto/presentation/all_cars/bloc/cars_event.dart';
+import 'package:gegabyteauto/presentation/all_cars/bloc/cars_state.dart';
 
 class AllCarsAppBar extends StatelessWidget implements PreferredSizeWidget {
   const AllCarsAppBar({super.key});
@@ -18,14 +18,12 @@ class AllCarsAppBar extends StatelessWidget implements PreferredSizeWidget {
       backgroundColor: AppColors.background,
       elevation: 0,
       centerTitle: false,
-      title: Text('Ընտրիր մեքենա', style: AppTextStyles.headlineMedium),
+      title: Text('Փնտրել', style: AppTextStyles.headlineMedium),
       actions: const [
+        _ViewModeButton(icon: Icons.view_list_rounded, mode: CarsViewMode.list),
+        _ViewModeButton(icon: Icons.grid_view_rounded, mode: CarsViewMode.grid),
         _ViewModeButton(
-            icon: Icons.view_list_rounded, mode: AllCarsViewMode.list),
-        _ViewModeButton(
-            icon: Icons.grid_view_rounded, mode: AllCarsViewMode.grid),
-        _ViewModeButton(
-            icon: Icons.slow_motion_video_rounded, mode: AllCarsViewMode.reels),
+            icon: Icons.slow_motion_video_rounded, mode: CarsViewMode.reels),
         SizedBox(width: 8),
       ],
     );
@@ -34,22 +32,20 @@ class AllCarsAppBar extends StatelessWidget implements PreferredSizeWidget {
 
 class _ViewModeButton extends StatelessWidget {
   final IconData icon;
-  final AllCarsViewMode mode;
+  final CarsViewMode mode;
 
   const _ViewModeButton({required this.icon, required this.mode});
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AllCarsFiltersBloc, AllCarsFiltersState>(
+    return BlocBuilder<CarsBloc, CarsState>(
       buildWhen: (previous, current) => previous.viewMode != current.viewMode,
       builder: (context, state) {
         final isSelected = state.viewMode == mode;
 
         return GestureDetector(
           onTap: () {
-            context
-                .read<AllCarsFiltersBloc>()
-                .add(AllCarsViewModeChanged(mode));
+            context.read<CarsBloc>().add(CarsViewModeChanged(mode));
           },
           child: AnimatedContainer(
             duration: const Duration(milliseconds: 200),
