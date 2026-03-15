@@ -7,10 +7,9 @@ class CarModelItem extends StatelessWidget {
   final int index;
   final int totalCount;
   final bool isOpen;
-  final bool isClosing;
-  final bool isCollapsing;
   final VoidCallback onTap;
   final Future<void> Function() onHideCompleted;
+  final void Function(String seria)? onSeriaTap;
 
   const CarModelItem({
     super.key,
@@ -18,10 +17,9 @@ class CarModelItem extends StatelessWidget {
     required this.index,
     required this.totalCount,
     required this.isOpen,
-    required this.isClosing,
-    required this.isCollapsing,
     required this.onTap,
     required this.onHideCompleted,
+    this.onSeriaTap,
   });
 
   @override
@@ -32,7 +30,7 @@ class CarModelItem extends StatelessWidget {
         GestureDetector(
           onTap: onTap,
           child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8.0),
+            padding: const EdgeInsets.symmetric(vertical: 24.0),
             child: Text(
               model.name,
               style: TextStyle(
@@ -59,7 +57,7 @@ class CarModelItem extends StatelessWidget {
                   child: child,
                 );
               },
-              child: isOpen || isClosing
+              child: isOpen 
                   ? Padding(
                       key: ValueKey('serias_$index'),
                       padding: const EdgeInsets.only(left: 20.0, bottom: 8.0),
@@ -95,7 +93,7 @@ class CarModelItem extends StatelessWidget {
                 ),
               );
             },
-            child: (!isOpen && !isClosing && !isCollapsing)
+            child: !isOpen 
                 ? const Padding(
                     key: ValueKey('divider_visible'),
                     padding: EdgeInsets.only(top: 5),

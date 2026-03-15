@@ -1,6 +1,5 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:gegabyteauto/models/car_view_model.dart';
 
 abstract class FiltersEvent extends Equatable {
   const FiltersEvent();
@@ -9,17 +8,10 @@ abstract class FiltersEvent extends Equatable {
   List<Object?> get props => [];
 }
 
-/// Load cars data to populate filter options
 class FiltersLoadRequested extends FiltersEvent {
-  final List<CarViewModel> cars;
-
-  const FiltersLoadRequested({required this.cars});
-
-  @override
-  List<Object?> get props => [cars];
+  const FiltersLoadRequested();
 }
 
-/// Brand selection changed
 class FiltersBrandChanged extends FiltersEvent {
   final String? brand;
 
@@ -29,7 +21,6 @@ class FiltersBrandChanged extends FiltersEvent {
   List<Object?> get props => [brand];
 }
 
-/// Model selection changed (depends on selected brand)
 class FiltersModelChanged extends FiltersEvent {
   final String? model;
 
@@ -39,7 +30,6 @@ class FiltersModelChanged extends FiltersEvent {
   List<Object?> get props => [model];
 }
 
-/// Series selection changed (depends on selected model)
 class FiltersSeriesChanged extends FiltersEvent {
   final String? series;
 
@@ -49,7 +39,6 @@ class FiltersSeriesChanged extends FiltersEvent {
   List<Object?> get props => [series];
 }
 
-/// Gearbox selection changed
 class FiltersGearBoxChanged extends FiltersEvent {
   final String? gearBox;
 
@@ -59,7 +48,6 @@ class FiltersGearBoxChanged extends FiltersEvent {
   List<Object?> get props => [gearBox];
 }
 
-/// Engine selection changed
 class FiltersEngineChanged extends FiltersEvent {
   final String? engine;
 
@@ -69,7 +57,6 @@ class FiltersEngineChanged extends FiltersEvent {
   List<Object?> get props => [engine];
 }
 
-/// Price range changed
 class FiltersPriceRangeChanged extends FiltersEvent {
   final RangeValues range;
 
@@ -79,7 +66,6 @@ class FiltersPriceRangeChanged extends FiltersEvent {
   List<Object?> get props => [range];
 }
 
-/// Year range changed
 class FiltersYearRangeChanged extends FiltersEvent {
   final RangeValues range;
 
@@ -89,12 +75,10 @@ class FiltersYearRangeChanged extends FiltersEvent {
   List<Object?> get props => [range];
 }
 
-/// Apply filters and navigate back
 class FiltersApplyRequested extends FiltersEvent {
   const FiltersApplyRequested();
 }
 
-/// Reset all filters to defaults
 class FiltersResetRequested extends FiltersEvent {
   const FiltersResetRequested();
 }

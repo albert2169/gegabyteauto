@@ -10,7 +10,7 @@ class CustomSearchBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => context.pushRoute(const AllCarsRoute()),
+      onTap: () => context.pushRoute(AllCarsRoute()),
       child: Container(
         decoration: BoxDecoration(
           color: AppColors.surfaceVariant,

@@ -21,12 +21,22 @@ import 'package:gegabyteauto/presentation/filters/bloc/filters_state.dart'
 
 @RoutePage()
 class AllCarsScreen extends StatelessWidget {
-  const AllCarsScreen({super.key});
+  final FiltersState? preAppliedFilters;
+
+  const AllCarsScreen({super.key, this.preAppliedFilters});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => getIt<CarsBloc>()..add(const CarsLoadRequested()),
+      create: (_) {
+        final bloc = getIt<CarsBloc>();
+        if (preAppliedFilters != null) {
+          bloc.add(CarsFiltersApplied(preAppliedFilters!));
+        } else {
+          bloc.add(const CarsLoadRequested());
+        }
+        return bloc;
+      },
       child: const _AllCarsScreenContent(),
     );
   }
@@ -69,7 +79,7 @@ class _AllCarsBody extends StatelessWidget {
   Future<void> _onFiltersTap(BuildContext context) async {
     final carsBloc = context.read<CarsBloc>();
     final result = await context.router.push<FiltersState>(
-      FiltersRoute(cars: carsBloc.state.allCars),
+      FiltersRoute(),
     );
     if (result != null) {
       carsBloc.add(CarsFiltersApplied(result));

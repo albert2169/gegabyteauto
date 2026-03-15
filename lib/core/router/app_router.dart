@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 // Route argument types
 import 'package:gegabyteauto/models/car_brand_view_model.dart';
 import 'package:gegabyteauto/models/car_view_model.dart';
+import 'package:gegabyteauto/presentation/filters/bloc/filters_state.dart';
 // Screens
 import 'package:gegabyteauto/presentation/auth/auth_screen/auth_screen.dart';
 import 'package:gegabyteauto/presentation/shell/screens/shell_screen.dart';

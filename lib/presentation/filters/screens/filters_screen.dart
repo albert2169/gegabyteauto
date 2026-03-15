@@ -2,7 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gegabyteauto/core/theme/app_colors.dart';
-import 'package:gegabyteauto/models/car_view_model.dart';
 
 import '../bloc/filters_bloc.dart';
 import '../bloc/filters_event.dart';
@@ -19,14 +18,12 @@ import 'widgets/filters_header.dart';
 
 @RoutePage()
 class FiltersScreen extends StatelessWidget {
-  final List<CarViewModel> cars;
-
-  const FiltersScreen({super.key, required this.cars});
+  const FiltersScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => FiltersBloc()..add(FiltersLoadRequested(cars: cars)),
+      create: (_) => FiltersBloc()..add(const FiltersLoadRequested()),
       child: const _FiltersScreenContent(),
     );
   }

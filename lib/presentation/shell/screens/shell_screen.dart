@@ -12,11 +12,11 @@ class ShellScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AutoTabsRouter(
-      routes: const [
-        HomeRoute(),
+      routes: [
+        const HomeRoute(),
         AllCarsRoute(),
-        FavoritesRoute(),
-        ProfileRoute(),
+        const FavoritesRoute(),
+        const ProfileRoute(),
       ],
       transitionBuilder: (context, child, animation) => FadeTransition(
         opacity: animation,

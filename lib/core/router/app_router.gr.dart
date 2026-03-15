@@ -12,18 +12,44 @@ part of 'app_router.dart';
 
 /// generated route for
 /// [AllCarsScreen]
-class AllCarsRoute extends PageRouteInfo<void> {
-  const AllCarsRoute({List<PageRouteInfo>? children})
-    : super(AllCarsRoute.name, initialChildren: children);
+class AllCarsRoute extends PageRouteInfo<AllCarsRouteArgs> {
+  AllCarsRoute({
+    Key? key,
+    FiltersState? preAppliedFilters,
+    List<PageRouteInfo>? children,
+  }) : super(
+         AllCarsRoute.name,
+         args: AllCarsRouteArgs(key: key, preAppliedFilters: preAppliedFilters),
+         initialChildren: children,
+       );
 
   static const String name = 'AllCarsRoute';
 
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const AllCarsScreen();
+      final args = data.argsAs<AllCarsRouteArgs>(
+        orElse: () => const AllCarsRouteArgs(),
+      );
+      return AllCarsScreen(
+        key: args.key,
+        preAppliedFilters: args.preAppliedFilters,
+      );
     },
   );
+}
+
+class AllCarsRouteArgs {
+  const AllCarsRouteArgs({this.key, this.preAppliedFilters});
+
+  final Key? key;
+
+  final FiltersState? preAppliedFilters;
+
+  @override
+  String toString() {
+    return 'AllCarsRouteArgs{key: $key, preAppliedFilters: $preAppliedFilters}';
+  }
 }
 
 /// generated route for
@@ -113,39 +139,18 @@ class FavoritesRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [FiltersScreen]
-class FiltersRoute extends PageRouteInfo<FiltersRouteArgs> {
-  FiltersRoute({
-    Key? key,
-    required List<CarViewModel> cars,
-    List<PageRouteInfo>? children,
-  }) : super(
-         FiltersRoute.name,
-         args: FiltersRouteArgs(key: key, cars: cars),
-         initialChildren: children,
-       );
+class FiltersRoute extends PageRouteInfo<void> {
+  const FiltersRoute({List<PageRouteInfo>? children})
+    : super(FiltersRoute.name, initialChildren: children);
 
   static const String name = 'FiltersRoute';
 
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      final args = data.argsAs<FiltersRouteArgs>();
-      return FiltersScreen(key: args.key, cars: args.cars);
+      return const FiltersScreen();
     },
   );
-}
-
-class FiltersRouteArgs {
-  const FiltersRouteArgs({this.key, required this.cars});
-
-  final Key? key;
-
-  final List<CarViewModel> cars;
-
-  @override
-  String toString() {
-    return 'FiltersRouteArgs{key: $key, cars: $cars}';
-  }
 }
 
 /// generated route for
