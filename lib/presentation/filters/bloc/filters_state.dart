@@ -1,6 +1,5 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:gegabyteauto/app_constants/app_constants.dart';
 import 'package:gegabyteauto/presentation/all_cars/bloc/cars_state.dart';
 
 export 'package:gegabyteauto/presentation/all_cars/bloc/cars_state.dart'

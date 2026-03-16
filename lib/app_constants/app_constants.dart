@@ -8,8 +8,9 @@ import '../models/car_brand_view_model.dart';
 
 class AppConstants {
   AppConstants._();
- 
+  static late final List<CarBrandViewModel> brands;
   static const String carBrandsAssetDir = 'assets/car_brands/';
+  static const brandsJsonPath = 'lib/data/json/brand_model_seria_json.json';
 
   static final List<CarBrandViewModel> mockCarBrandViewModels = [
     CarBrandViewModel(

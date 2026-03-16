@@ -36,3 +36,4 @@ flutter:
   uses-material-design: true
   assets:
   - assets/car_brands/
+  - lib/data/json/brand_model_seria_json.json

@@ -7,13 +7,16 @@ import 'package:gegabyteauto/core/theme/app_text_styles.dart';
 import 'package:gegabyteauto/models/car_brand_view_model.dart';
 
 @RoutePage()
-class BrandsScreen extends StatelessWidget {
+class BrandsScreen extends StatefulWidget {
   const BrandsScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final brands = AppConstants.mockCarBrandViewModels;
+  State<BrandsScreen> createState() => _BrandsScreenState();
+}
 
+class _BrandsScreenState extends State<BrandsScreen> {
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(
@@ -33,9 +36,9 @@ class BrandsScreen extends StatelessWidget {
           mainAxisSpacing: 12,
           childAspectRatio: 0.95,
         ),
-        itemCount: brands.length,
+        itemCount: AppConstants.brands.length,
         itemBuilder: (context, index) {
-          final brand = brands[index];
+          final brand = AppConstants.brands[index];
           return _BrandCard(
             brand: brand,
             onTap: () => context.pushRoute(CarModelsRoute(brand: brand)),

@@ -1,4 +1,8 @@
+import 'dart:convert';
+
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gegabyteauto/app_constants/app_constants.dart';
 import 'package:gegabyteauto/models/car_brand_view_model.dart';
 
 import 'filters_event.dart';
@@ -8,6 +12,7 @@ class FiltersBloc extends Bloc<FiltersEvent, FiltersState> {
   late final List<CarBrandViewModel> _allBrandModels;
 
   FiltersBloc() : super(const FiltersState.initial()) {
+    on<InitFiltersEvent>(_onInitFiltersEvent);
     on<FiltersBrandChanged>(_onBrandChanged);
     on<FiltersModelChanged>(_onModelChanged);
     on<FiltersSeriesChanged>(_onSeriesChanged);
@@ -19,18 +24,31 @@ class FiltersBloc extends Bloc<FiltersEvent, FiltersState> {
     on<FiltersResetRequested>(_onResetRequested);
   }
 
+  Future<void> _onInitFiltersEvent(
+    InitFiltersEvent event,
+    Emitter<FiltersState> emit,
+  ) async {
+    await _loadBrands();
+    final availableBrands = [...AppConstants.brands.map((brand) => brand.name)];
+    emit(state.copyWith(
+      availableBrands: availableBrands,
+    ));
+  }
+
   void _onBrandChanged(
     FiltersBrandChanged event,
     Emitter<FiltersState> emit,
   ) {
-    List<String> filteredModels = [];
+    final selectedBrandModel = AppConstants.brands.where((brand) {
+      return brand.name == event.brand;
+    }).first;
 
     emit(state.copyWith(
       selectedBrand: event.brand,
       clearSelectedBrand: event.brand == null,
       clearSelectedModel: true,
       clearSelectedSeries: true,
-      availableModels: filteredModels,
+      allModels: [...selectedBrandModel.models.map((model) => model.name)],
       availableSeries: const [],
     ));
   }
@@ -128,5 +146,15 @@ class FiltersBloc extends Bloc<FiltersEvent, FiltersState> {
     ));
   }
 
-  
+  Future<void> _loadBrands() async {
+    final jsonString = await rootBundle.loadString(AppConstants.brandsJsonPath);
+    final decoded = jsonDecode(jsonString) as List<dynamic>;
+
+    final brands = decoded
+        .map((e) => CarBrandViewModel.fromJson(e as Map<String, dynamic>))
+        .toList();
+
+    brands.sort((a, b) => a.name.compareTo(b.name));
+    AppConstants.brands = brands;
+  }
 }

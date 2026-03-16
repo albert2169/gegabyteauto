@@ -1,12 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:gegabyteauto/core/di/injection.dart';
 import 'package:gegabyteauto/core/router/app_router.dart';
 import 'package:gegabyteauto/core/theme/app_colors.dart';
 import 'package:gegabyteauto/models/car_brand_view_model.dart';
 import 'package:gegabyteauto/presentation/car_models_screen/widgets/car_model_item.dart';
 import 'package:gegabyteauto/presentation/car_models_screen/widgets/car_models_header.dart';
-import 'package:gegabyteauto/presentation/filters/bloc/filters_bloc.dart';
 import 'package:gegabyteauto/presentation/filters/bloc/filters_state.dart';
 
 @RoutePage()

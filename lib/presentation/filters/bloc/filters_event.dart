@@ -8,7 +8,12 @@ abstract class FiltersEvent extends Equatable {
   List<Object?> get props => [];
 }
 
+class InitFiltersEvent extends FiltersEvent {
+  const InitFiltersEvent();
 
+  @override
+  List<Object?> get props => [];
+}
 
 class FiltersBrandChanged extends FiltersEvent {
   final String? brand;

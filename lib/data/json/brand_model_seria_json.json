@@ -1,0 +1,790 @@
+[
+  {
+    "name": "Audi",
+    "logoAssetPath": "assets/car_brands/image2.png",
+    "models": [
+      {
+        "name": "A3",
+        "serias": ["Sedan", "Sportback", "S3", "RS3 Sportback"]
+      },
+      {
+        "name": "A4",
+        "serias": ["Sedan", "Avant", "S4 Sedan", "S4 Avant", "RS4 Avant"]
+      },
+      {
+        "name": "A5",
+        "serias": ["Coupe", "Sportback", "Cabriolet", "S5 Coupe", "S5 Sportback", "RS5 Coupe", "RS5 Sportback"]
+      },
+      {
+        "name": "A6",
+        "serias": ["Sedan", "Avant", "Allroad", "S6 Sedan", "S6 Avant", "RS6 Avant"]
+      },
+      {
+        "name": "A7",
+        "serias": ["Sportback", "S7 Sportback", "RS7 Sportback"]
+      },
+      {
+        "name": "A8",
+        "serias": ["Standard", "Long", "S8", "A8 L"]
+      },
+      {
+        "name": "Q3",
+        "serias": ["Standard", "Sportback", "RS Q3", "RS Q3 Sportback"]
+      },
+      {
+        "name": "Q5",
+        "serias": ["Standard", "Sportback", "SQ5", "SQ5 Sportback", "RS Q5"]
+      },
+      {
+        "name": "Q7",
+        "serias": ["Standard", "SQ7"]
+      },
+      {
+        "name": "Q8",
+        "serias": ["Standard", "SQ8", "RS Q8"]
+      },
+      {
+        "name": "e-tron",
+        "serias": ["50 quattro", "55 quattro", "S", "GT quattro", "RS GT quattro"]
+      },
+      {
+        "name": "R8",
+        "serias": ["V10 Performance", "V10 Performance Spyder", "GT"]
+      },
+      {
+        "name": "TT",
+        "serias": ["TTS Coupe", "TTS Roadster", "TTRS Coupe", "TTRS Roadster"]
+      }
+    ]
+  },
+  {
+    "name": "Bentley",
+    "logoAssetPath": "assets/car_brands/image18.png",
+    "models": [
+      {
+        "name": "Continental GT",
+        "serias": ["Standard", "V8", "S V8", "Speed", "Azure", "GT3-R"]
+      },
+      {
+        "name": "Continental GTC",
+        "serias": ["Standard", "V8", "S V8", "Speed", "Azure"]
+      },
+      {
+        "name": "Flying Spur",
+        "serias": ["Standard", "V8", "S V8", "Speed", "Azure", "Hybrid"]
+      },
+      {
+        "name": "Bentayga",
+        "serias": ["Standard", "V8", "S", "EWB", "Azure", "Hybrid", "Speed"]
+      },
+      {
+        "name": "Mulsanne",
+        "serias": ["Standard", "Extended Wheelbase", "Speed", "6.75 Edition"]
+      },
+      {
+        "name": "Bacalar",
+        "serias": ["Standard"]
+      }
+    ]
+  },
+  {
+    "name": "BMW",
+    "logoAssetPath": "assets/car_brands/image17.png",
+    "models": [
+      {
+        "name": "2 Series",
+        "serias": ["220i Coupe", "230i Coupe", "M240i xDrive", "M2", "M2 Competition"]
+      },
+      {
+        "name": "3 Series",
+        "serias": ["320i", "330i", "330e", "M340i xDrive", "M3", "M3 Competition", "M3 CS"]
+      },
+      {
+        "name": "4 Series",
+        "serias": ["420i Coupe", "430i Coupe", "440i xDrive", "M440i xDrive", "M4", "M4 Competition", "M4 CSL"]
+      },
+      {
+        "name": "5 Series",
+        "serias": ["520i", "530i xDrive", "540i xDrive", "550e xDrive", "M550i xDrive", "M5", "M5 CS"]
+      },
+      {
+        "name": "7 Series",
+        "serias": ["730i", "740i xDrive", "750e xDrive", "760i xDrive", "M760e", "Alpina B7"]
+      },
+      {
+        "name": "8 Series",
+        "serias": ["840i", "850i xDrive", "M850i xDrive", "M8", "M8 Competition", "Alpina B8"]
+      },
+      {
+        "name": "X3",
+        "serias": ["sDrive30i", "xDrive30i", "xDrive30e", "M40i", "M Competition"]
+      },
+      {
+        "name": "X4",
+        "serias": ["xDrive20i", "xDrive30i", "M40i", "M Competition"]
+      },
+      {
+        "name": "X5",
+        "serias": ["sDrive40i", "xDrive40i", "xDrive50e", "M50i", "M Competition", "Alpina XB7"]
+      },
+      {
+        "name": "X6",
+        "serias": ["sDrive40i", "xDrive40i", "M50i", "M Competition"]
+      },
+      {
+        "name": "X7",
+        "serias": ["xDrive40i", "xDrive50e", "M60i", "Alpina XB7"]
+      },
+      {
+        "name": "iX",
+        "serias": ["xDrive40", "xDrive50", "M60"]
+      },
+      {
+        "name": "i4",
+        "serias": ["eDrive35", "eDrive40", "M50"]
+      },
+      {
+        "name": "i7",
+        "serias": ["eDrive50", "xDrive60", "M70 xDrive"]
+      }
+    ]
+  },
+  {
+    "name": "Ferrari",
+    "logoAssetPath": "assets/car_brands/image3.png",
+    "models": [
+      {
+        "name": "296",
+        "serias": ["GTB", "GTS", "GT3", "Challenge"]
+      },
+      {
+        "name": "488",
+        "serias": ["GTB", "Spider", "Pista", "Pista Spider", "Challenge Evo"]
+      },
+      {
+        "name": "812",
+        "serias": ["Superfast", "GTS", "Competizione", "Competizione A"]
+      },
+      {
+        "name": "F8",
+        "serias": ["Tributo", "Spider"]
+      },
+      {
+        "name": "Roma",
+        "serias": ["Coupe", "Spider"]
+      },
+      {
+        "name": "Portofino",
+        "serias": ["Standard", "M"]
+      },
+      {
+        "name": "SF90",
+        "serias": ["Stradale", "Spider", "XX Stradale", "XX Spider"]
+      },
+      {
+        "name": "Purosangue",
+        "serias": ["V12"]
+      },
+      {
+        "name": "California",
+        "serias": ["Standard", "T"]
+      },
+      {
+        "name": "LaFerrari",
+        "serias": ["Coupe", "Aperta"]
+      }
+    ]
+  },
+  {
+    "name": "Ford",
+    "logoAssetPath": "assets/car_brands/image4.png",
+    "models": [
+      {
+        "name": "Mustang",
+        "serias": ["EcoBoost", "EcoBoost Premium", "GT", "GT Premium", "Mach 1", "Shelby GT500", "Dark Horse", "Mach-E"]
+      },
+      {
+        "name": "F-150",
+        "serias": ["XL", "XLT", "Lariat", "King Ranch", "Platinum", "Limited", "Raptor", "Tremor", "Lightning"]
+      },
+      {
+        "name": "Explorer",
+        "serias": ["Base", "XLT", "ST-Line", "Limited", "ST", "Platinum", "Timberline"]
+      },
+      {
+        "name": "Bronco",
+        "serias": ["Base", "Big Bend", "Black Diamond", "Badlands", "Wildtrak", "Everglades", "Raptor", "Heritage Edition"]
+      },
+      {
+        "name": "Edge",
+        "serias": ["SE", "SEL", "ST-Line", "Titanium", "ST"]
+      },
+      {
+        "name": "Escape",
+        "serias": ["S", "SE", "SEL", "Titanium", "ST-Line", "Plug-In Hybrid"]
+      },
+      {
+        "name": "Expedition",
+        "serias": ["XLT", "Limited", "King Ranch", "Platinum", "Timberline", "Max Limited", "Max Platinum"]
+      },
+      {
+        "name": "Ranger",
+        "serias": ["XL", "XLT", "Lariat", "Wildtrak", "Raptor"]
+      },
+      {
+        "name": "Maverick",
+        "serias": ["XL", "XLT", "Lariat", "Tremor", "Lobo"]
+      },
+      {
+        "name": "GT",
+        "serias": ["Standard", "Carbon Series", "Heritage Edition", "Liquid Carbon Edition"]
+      }
+    ]
+  },
+  {
+    "name": "Honda",
+    "logoAssetPath": "assets/car_brands/image5.png",
+    "models": [
+      {
+        "name": "Civic",
+        "serias": ["LX", "Sport", "EX", "EX-L", "Touring", "Type R", "Si"]
+      },
+      {
+        "name": "Accord",
+        "serias": ["LX", "Sport", "Sport-L", "EX-L", "Touring", "Hybrid Sport", "Hybrid Touring"]
+      },
+      {
+        "name": "CR-V",
+        "serias": ["LX", "EX", "EX-L", "Sport", "Sport-L", "Touring", "Hybrid EX-L", "Hybrid Touring"]
+      },
+      {
+        "name": "HR-V",
+        "serias": ["LX", "Sport", "EX", "EX-L"]
+      },
+      {
+        "name": "Pilot",
+        "serias": ["Sport", "EX-L", "TrailSport", "Elite", "Black Edition"]
+      },
+      {
+        "name": "Odyssey",
+        "serias": ["LX", "EX", "EX-L", "Touring", "Elite"]
+      },
+      {
+        "name": "Ridgeline",
+        "serias": ["Sport", "RTL", "RTL-E", "Black Edition", "TrailSport"]
+      },
+      {
+        "name": "Passport",
+        "serias": ["Sport", "EX-L", "TrailSport", "Elite"]
+      },
+      {
+        "name": "NSX",
+        "serias": ["Standard", "Type S"]
+      }
+    ]
+  },
+  {
+    "name": "Hyundai",
+    "logoAssetPath": "assets/car_brands/image6.png",
+    "models": [
+      {
+        "name": "Elantra",
+        "serias": ["SE", "SEL", "N Line", "Limited", "N", "Hybrid Blue", "Hybrid Limited"]
+      },
+      {
+        "name": "Sonata",
+        "serias": ["SE", "SEL", "SEL Plus", "N Line", "Limited", "Hybrid SE", "Hybrid Limited"]
+      },
+      {
+        "name": "Tucson",
+        "serias": ["SE", "SEL", "N Line", "XRT", "Limited", "Hybrid Blue", "Hybrid Limited", "PHEV"]
+      },
+      {
+        "name": "Santa Fe",
+        "serias": ["SE", "SEL", "XRT", "Limited", "Calligraphy", "Hybrid SEL Premium", "PHEV"]
+      },
+      {
+        "name": "Kona",
+        "serias": ["SE", "SEL", "N Line", "Limited", "N", "Electric SE", "Electric Limited"]
+      },
+      {
+        "name": "Ioniq 5",
+        "serias": ["Standard Range SE", "Long Range SE", "Long Range SEL", "Long Range Limited", "N"]
+      },
+      {
+        "name": "Ioniq 6",
+        "serias": ["Standard Range SE", "Long Range SE", "Long Range SEL", "Long Range Limited"]
+      },
+      {
+        "name": "Ioniq 9",
+        "serias": ["SE", "SEL", "Limited", "Calligraphy"]
+      },
+      {
+        "name": "Palisade",
+        "serias": ["SE", "SEL", "XRT", "Limited", "Calligraphy"]
+      },
+      {
+        "name": "Venue",
+        "serias": ["SE", "SEL", "Limited"]
+      }
+    ]
+  },
+  {
+    "name": "Jaguar",
+    "logoAssetPath": "assets/car_brands/image8.png",
+    "models": [
+      {
+        "name": "XE",
+        "serias": ["S", "SE", "HSE", "R-Dynamic S", "R-Dynamic SE", "R-Dynamic HSE"]
+      },
+      {
+        "name": "XF",
+        "serias": ["S", "SE", "HSE", "R-Dynamic S", "R-Dynamic SE", "R-Dynamic HSE", "Sportbrake"]
+      },
+      {
+        "name": "XJ",
+        "serias": ["Portfolio", "R-Sport", "XJR", "XJR575", "Sentinel"]
+      },
+      {
+        "name": "F-Type",
+        "serias": ["P300", "P300 R-Dynamic", "P450", "P450 R-Dynamic", "P575 R", "P575 SVR", "Convertible P300", "Convertible P450"]
+      },
+      {
+        "name": "F-Pace",
+        "serias": ["S", "SE", "HSE", "R-Dynamic S", "R-Dynamic SE", "R-Dynamic HSE", "SVR"]
+      },
+      {
+        "name": "E-Pace",
+        "serias": ["S", "SE", "HSE", "R-Dynamic S", "R-Dynamic SE", "R-Dynamic HSE"]
+      },
+      {
+        "name": "I-Pace",
+        "serias": ["S", "SE", "HSE", "EV400 HSE Black"]
+      }
+    ]
+  },
+  {
+    "name": "Jeep",
+    "logoAssetPath": "assets/car_brands/image9.png",
+    "models": [
+      {
+        "name": "Wrangler",
+        "serias": ["Sport", "Sport S", "Willys", "Sahara", "Rubicon", "4xe", "392 Rubicon", "Rubicon 20th Anniversary"]
+      },
+      {
+        "name": "Grand Cherokee",
+        "serias": ["Laredo", "Altitude", "Limited", "Trailhawk", "Overland", "Summit", "Summit Reserve", "SRT", "Trackhawk", "4xe"]
+      },
+      {
+        "name": "Cherokee",
+        "serias": ["Sport", "Latitude", "Latitude Lux", "Trailhawk", "Limited", "Overland"]
+      },
+      {
+        "name": "Compass",
+        "serias": ["Sport", "Latitude", "Latitude Lux", "Trailhawk", "Limited", "High Altitude"]
+      },
+      {
+        "name": "Renegade",
+        "serias": ["Sport", "Latitude", "Altitude", "Trailhawk", "Limited"]
+      },
+      {
+        "name": "Gladiator",
+        "serias": ["Sport", "Sport S", "Willys", "Texas Trail", "Overland", "Rubicon", "Mojave"]
+      },
+      {
+        "name": "Grand Wagoneer",
+        "serias": ["Series I", "Series II", "Series III", "L Series I", "L Series II", "L Series III"]
+      },
+      {
+        "name": "Wagoneer",
+        "serias": ["Series I", "Series II", "Series III", "L Series I", "L Series II", "L Series III"]
+      }
+    ]
+  },
+  {
+    "name": "Kia",
+    "logoAssetPath": "assets/car_brands/image10.png",
+    "models": [
+      {
+        "name": "Forte",
+        "serias": ["FE", "LX", "GT-Line", "EX", "GT"]
+      },
+      {
+        "name": "K5",
+        "serias": ["LX", "EX", "GT-Line", "GT"]
+      },
+      {
+        "name": "Soul",
+        "serias": ["LX", "S", "EX", "GT-Line", "Turbo"]
+      },
+      {
+        "name": "Sportage",
+        "serias": ["LX", "EX", "S", "X-Line", "X-Line S", "SX", "SX Prestige", "Hybrid EX", "PHEV EX"]
+      },
+      {
+        "name": "Sorento",
+        "serias": ["LX", "S", "EX", "X-Line", "SX", "SX Prestige", "Hybrid EX", "Hybrid SX Prestige", "PHEV"]
+      },
+      {
+        "name": "Telluride",
+        "serias": ["LX", "S", "EX", "X-Line", "SX", "SX-P", "X-Pro", "X-Pro Prestige"]
+      },
+      {
+        "name": "Stinger",
+        "serias": ["GT-Line", "GT1", "GT2", "GT-S", "Scorpion Special Edition"]
+      },
+      {
+        "name": "EV6",
+        "serias": ["Light", "Standard RWD", "Wind RWD", "Wind AWD", "GT-Line RWD", "GT-Line AWD", "GT"]
+      },
+      {
+        "name": "EV9",
+        "serias": ["Light", "Wind", "Land", "GT-Line"]
+      },
+      {
+        "name": "Carnival",
+        "serias": ["LX", "EX", "SX", "SX Prestige"]
+      }
+    ]
+  },
+  {
+    "name": "Lamborghini",
+    "logoAssetPath": "assets/car_brands/image11.png",
+    "models": [
+      {
+        "name": "Huracán",
+        "serias": ["LP 610-4", "LP 580-2", "Performante", "EVO", "EVO RWD", "EVO Spyder", "STO", "Tecnica", "Sterrato"]
+      },
+      {
+        "name": "Urus",
+        "serias": ["Standard", "S", "SE", "Performante", "Pearl Capsule"]
+      },
+      {
+        "name": "Aventador",
+        "serias": ["LP 700-4", "LP 700-4 Roadster", "LP 740-4 S", "LP 740-4 S Roadster", "SVJ", "SVJ Roadster", "LP 780-4 Ultimae"]
+      },
+      {
+        "name": "Revuelto",
+        "serias": ["V12 Hybrid"]
+      },
+      {
+        "name": "Sián",
+        "serias": ["Coupe", "Roadster"]
+      },
+      {
+        "name": "Countach",
+        "serias": ["LPI 800-4"]
+      }
+    ]
+  },
+  {
+    "name": "Lexus",
+    "logoAssetPath": "assets/car_brands/image12.png",
+    "models": [
+      {
+        "name": "IS",
+        "serias": ["IS 300", "IS 350", "IS 350 AWD", "IS 500 F Sport Performance", "IS 500 F Sport Launch Edition"]
+      },
+      {
+        "name": "ES",
+        "serias": ["ES 250", "ES 300h", "ES 350", "F Sport", "F Sport Design"]
+      },
+      {
+        "name": "LS",
+        "serias": ["LS 500", "LS 500h", "LS 500 AWD", "LS 500h AWD", "LS 500 F Sport"]
+      },
+      {
+        "name": "NX",
+        "serias": ["NX 250", "NX 350", "NX 350h", "NX 450h+", "F Sport Handling", "F Sport Design"]
+      },
+      {
+        "name": "RX",
+        "serias": ["RX 350", "RX 350h", "RX 350 AWD", "RX 500h F Sport", "RX 450h+", "F Sport Premium"]
+      },
+      {
+        "name": "GX",
+        "serias": ["GX 550 Premium Plus", "GX 550 Luxury Plus", "GX 550 Overtrail", "GX 550 Overtrail+"]
+      },
+      {
+        "name": "LX",
+        "serias": ["LX 600 Premium", "LX 600 Luxury", "LX 600 F Sport", "LX 600 Ultra Luxury"]
+      },
+      {
+        "name": "UX",
+        "serias": ["UX 200", "UX 250h", "UX 300h", "F Sport Design"]
+      },
+      {
+        "name": "LC",
+        "serias": ["LC 500 Coupe", "LC 500 Convertible", "LC 500h"]
+      },
+      {
+        "name": "RC",
+        "serias": ["RC 300", "RC 350", "RC 350 AWD", "RC F", "RC F Track Edition"]
+      },
+      {
+        "name": "RZ",
+        "serias": ["RZ 300e", "RZ 450e", "RZ 450e F Sport"]
+      }
+    ]
+  },
+  {
+    "name": "Mazda",
+    "logoAssetPath": "assets/car_brands/image13.png",
+    "models": [
+      {
+        "name": "Mazda3",
+        "serias": ["Sedan S", "Sedan Select", "Sedan Preferred", "Hatchback S", "Hatchback Select", "Hatchback Preferred", "Turbo Premium", "Turbo Premium Plus"]
+      },
+      {
+        "name": "Mazda6",
+        "serias": ["Sport", "Touring", "Grand Touring", "Signature", "Turbo Grand Touring", "Turbo Signature"]
+      },
+      {
+        "name": "CX-30",
+        "serias": ["S", "Select", "Preferred", "Premium", "Premium Plus", "Turbo Premium", "Turbo Premium Plus"]
+      },
+      {
+        "name": "CX-5",
+        "serias": ["S", "Select", "Preferred", "Carbon Edition", "Touring", "Grand Touring", "Grand Touring Reserve", "Signature"]
+      },
+      {
+        "name": "CX-50",
+        "serias": ["S", "Select", "Preferred", "Preferred Plus", "Premium", "Premium Plus", "Meridian Edition", "Turbo Premium Plus"]
+      },
+      {
+        "name": "CX-60",
+        "serias": ["PHEV Exclusive-Line", "PHEV Homura", "e-Skyactiv X", "e-Skyactiv-D", "3.3 Turbo"]
+      },
+      {
+        "name": "CX-90",
+        "serias": ["PHEV Select", "PHEV Preferred", "PHEV Premium", "PHEV Premium Plus", "MHEV S Select", "MHEV S Preferred", "Turbo S Signature"]
+      },
+      {
+        "name": "MX-5 Miata",
+        "serias": ["Sport", "Club", "Grand Touring", "RF Club", "RF Grand Touring"]
+      }
+    ]
+  },
+  {
+    "name": "Mercedes-Benz",
+    "logoAssetPath": "assets/car_brands/image16.png",
+    "models": [
+      {
+        "name": "A-Class",
+        "serias": ["A 180", "A 200", "A 220 4MATIC", "AMG A 35", "AMG A 45 S"]
+      },
+      {
+        "name": "C-Class",
+        "serias": ["C 180", "C 200", "C 220d", "C 300", "C 300 4MATIC", "AMG C 43", "AMG C 63 S E Performance"]
+      },
+      {
+        "name": "E-Class",
+        "serias": ["E 200", "E 220d", "E 300", "E 300 4MATIC", "AMG E 53 4MATIC+", "AMG E 63 S 4MATIC+"]
+      },
+      {
+        "name": "S-Class",
+        "serias": ["S 350d", "S 400d 4MATIC", "S 500 4MATIC", "S 580 4MATIC", "AMG S 63 E Performance", "Maybach S 580", "Maybach S 680"]
+      },
+      {
+        "name": "G-Class",
+        "serias": ["G 350d", "G 400d", "G 500", "AMG G 63", "AMG G 63 4x4²", "EQ G Electric"]
+      },
+      {
+        "name": "AMG GT",
+        "serias": ["43", "53 4MATIC+", "63 S E Performance", "Black Series"]
+      },
+      {
+        "name": "CLA",
+        "serias": ["CLA 200", "CLA 220d", "CLA 250", "CLA 250 4MATIC", "AMG CLA 35", "AMG CLA 45 S"]
+      },
+      {
+        "name": "CLE",
+        "serias": ["CLE 200", "CLE 300 4MATIC", "AMG CLE 53 4MATIC+", "Cabriolet CLE 200", "Cabriolet AMG CLE 53"]
+      },
+      {
+        "name": "GLA",
+        "serias": ["GLA 200", "GLA 220d", "GLA 250 4MATIC", "AMG GLA 35", "AMG GLA 45 S"]
+      },
+      {
+        "name": "GLB",
+        "serias": ["GLB 200", "GLB 220d", "GLB 250 4MATIC", "AMG GLB 35"]
+      },
+      {
+        "name": "GLC",
+        "serias": ["GLC 200", "GLC 220d", "GLC 300 4MATIC", "GLC 400d 4MATIC", "AMG GLC 43 4MATIC", "AMG GLC 63 S E Performance"]
+      },
+      {
+        "name": "GLE",
+        "serias": ["GLE 300d", "GLE 350 4MATIC", "GLE 400d 4MATIC", "GLE 450e 4MATIC", "AMG GLE 53 4MATIC+", "AMG GLE 63 S 4MATIC+"]
+      },
+      {
+        "name": "GLS",
+        "serias": ["GLS 350d 4MATIC", "GLS 450 4MATIC", "GLS 580 4MATIC", "AMG GLS 63 4MATIC+", "Maybach GLS 600 4MATIC"]
+      },
+      {
+        "name": "EQS",
+        "serias": ["EQS 450+", "EQS 450 4MATIC", "EQS 580 4MATIC", "AMG EQS 53 4MATIC+"]
+      },
+      {
+        "name": "EQE",
+        "serias": ["EQE 300", "EQE 350+", "EQE 500 4MATIC", "AMG EQE 43 4MATIC+", "AMG EQE 53 4MATIC+"]
+      },
+      {
+        "name": "EQB",
+        "serias": ["EQB 250+", "EQB 300 4MATIC", "EQB 350 4MATIC"]
+      }
+    ]
+  },
+  {
+    "name": "Porsche",
+    "logoAssetPath": "assets/car_brands/image19.png",
+    "models": [
+      {
+        "name": "911",
+        "serias": ["Carrera", "Carrera S", "Carrera 4", "Carrera 4S", "Targa 4", "Targa 4S", "GTS", "GTS Targa 4", "GT3", "GT3 Touring", "GT3 RS", "Turbo", "Turbo S", "Dakar", "Sport Classic", "St. Patrick's Day"]
+      },
+      {
+        "name": "Cayenne",
+        "serias": ["Standard", "S", "E-Hybrid", "Coupe", "Coupe S", "GTS", "GTS Coupe", "Turbo E-Hybrid", "Turbo S E-Hybrid", "GT"]
+      },
+      {
+        "name": "Macan",
+        "serias": ["Standard", "S", "GTS", "Turbo", "EV Standard", "EV 4", "EV 4S", "EV Turbo"]
+      },
+      {
+        "name": "Panamera",
+        "serias": ["Standard", "4", "4S", "4 E-Hybrid", "GTS", "GTS Sport Turismo", "Turbo S", "Turbo S E-Hybrid", "Sport Turismo 4", "Executive"]
+      },
+      {
+        "name": "Taycan",
+        "serias": ["Standard", "4S", "GTS", "Turbo", "Turbo GT", "Turbo S", "Cross Turismo 4", "Cross Turismo 4S", "Sport Turismo", "Sport Turismo Turbo S"]
+      },
+      {
+        "name": "718 Boxster",
+        "serias": ["Standard", "S", "GTS 4.0", "Spyder", "Spyder RS"]
+      },
+      {
+        "name": "718 Cayman",
+        "serias": ["Standard", "S", "GTS 4.0", "GT4", "GT4 RS"]
+      }
+    ]
+  },
+  {
+    "name": "Rolls-Royce",
+    "logoAssetPath": "assets/car_brands/image1.png",
+    "models": [
+      {
+        "name": "Ghost",
+        "serias": ["Standard", "Black Badge", "Extended", "Extended Black Badge", "Prism Edition"]
+      },
+      {
+        "name": "Phantom",
+        "serias": ["Standard", "Extended Wheelbase", "Black Badge", "Tempus Collection", "Syntopia"]
+      },
+      {
+        "name": "Wraith",
+        "serias": ["Standard", "Black Badge", "Luminary", "Kryptos"]
+      },
+      {
+        "name": "Dawn",
+        "serias": ["Standard", "Black Badge", "Silver Bullet"]
+      },
+      {
+        "name": "Cullinan",
+        "serias": ["Standard", "Black Badge", "Series II", "Series II Black Badge"]
+      },
+      {
+        "name": "Spectre",
+        "serias": ["Standard", "Black Badge"]
+      }
+    ]
+  },
+  {
+    "name": "Tesla",
+    "logoAssetPath": "assets/car_brands/image14.png",
+    "models": [
+      {
+        "name": "Model S",
+        "serias": ["Long Range", "Long Range AWD", "Plaid"]
+      },
+      {
+        "name": "Model 3",
+        "serias": ["Standard Range RWD", "Long Range AWD", "Performance", "Highland RWD", "Highland Long Range AWD"]
+      },
+      {
+        "name": "Model X",
+        "serias": ["Long Range AWD", "Plaid"]
+      },
+      {
+        "name": "Model Y",
+        "serias": ["Standard Range RWD", "Long Range AWD", "Performance AWD", "Juniper Long Range RWD", "Juniper Long Range AWD"]
+      },
+      {
+        "name": "Cybertruck",
+        "serias": ["Standard Range RWD", "Long Range AWD", "Cyberbeast"]
+      },
+      {
+        "name": "Roadster",
+        "serias": ["Standard", "Founders Series"]
+      },
+      {
+        "name": "Semi",
+        "serias": ["Standard Range", "Long Range"]
+      }
+    ]
+  },
+  {
+    "name": "Toyota",
+    "logoAssetPath": "assets/car_brands/image15.png",
+    "models": [
+      {
+        "name": "Camry",
+        "serias": ["LE", "SE", "SE Nightshade", "XLE", "XSE", "TRD", "Hybrid LE", "Hybrid XLE", "Hybrid XSE"]
+      },
+      {
+        "name": "Corolla",
+        "serias": ["L", "LE", "SE", "XLE", "XSE", "Hybrid LE", "Hybrid SE", "GR Sport", "GR Corolla"]
+      },
+      {
+        "name": "RAV4",
+        "serias": ["LE", "XLE", "XLE Premium", "TRD Off-Road", "Adventure", "Limited", "Hybrid LE", "Hybrid XSE", "Hybrid Limited", "Prime SE", "Prime XSE"]
+      },
+      {
+        "name": "Highlander",
+        "serias": ["L", "LE", "XLE", "XSE", "Limited", "Platinum", "Hybrid LE", "Hybrid XLE", "Hybrid Limited", "Hybrid Platinum"]
+      },
+      {
+        "name": "4Runner",
+        "serias": ["SR5", "SR5 Premium", "TRD Sport", "TRD Off-Road", "TRD Off-Road Premium", "Limited", "TRD Pro", "Trailhunter"]
+      },
+      {
+        "name": "Tacoma",
+        "serias": ["SR", "SR5", "TRD Sport", "TRD Off-Road", "Limited", "TRD Pro", "Trailhunter", "PreRunner"]
+      },
+      {
+        "name": "Tundra",
+        "serias": ["SR", "SR5", "Limited", "Platinum", "1794 Edition", "TRD Pro", "Capstone", "Hybrid SR5"]
+      },
+      {
+        "name": "Land Cruiser",
+        "serias": ["Standard", "First Edition", "Heritage Edition", "1958 Edition"]
+      },
+      {
+        "name": "Supra",
+        "serias": ["2.0", "3.0", "3.0 Premium", "A91-CF Edition", "A91-MT Edition", "GR Supra"]
+      },
+      {
+        "name": "GR86",
+        "serias": ["Standard", "Premium"]
+      },
+      {
+        "name": "Prius",
+        "serias": ["LE", "XLE", "Limited", "Prime LE", "Prime XSE", "Prime XSE Premium"]
+      },
+      {
+        "name": "Sequoia",
+        "serias": ["SR5", "Limited", "Platinum", "TRD Pro", "Capstone", "Hybrid Limited", "Hybrid Platinum"]
+      }
+    ]
+  }
+]
