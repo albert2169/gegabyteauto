@@ -19,7 +19,7 @@ class AllCarsListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return RefreshIndicator(
       onRefresh: () async {
-        context.read<CarsBloc>().add(const CarsRefreshRequested());
+        context.read<CarsBloc>().add(const FetchAllCarsEvent());
       },
       color: AppColors.primary,
       backgroundColor: AppColors.surface,

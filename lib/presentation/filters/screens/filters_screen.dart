@@ -59,7 +59,7 @@ class _FiltersScreenContent extends StatelessWidget {
                     ),
                     const SizedBox(height: 16),
                     Text(
-                      state.errorMessage ?? 'An error occurred',
+                      'An error occurred',
                       style: const TextStyle(color: Colors.white70),
                     ),
                   ],

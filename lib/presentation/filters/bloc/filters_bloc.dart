@@ -9,9 +9,10 @@ import 'filters_event.dart';
 import 'filters_state.dart';
 
 class FiltersBloc extends Bloc<FiltersEvent, FiltersState> {
-  late final List<CarBrandViewModel> _allBrandModels;
+  late FiltersState _initialFilterState;
 
   FiltersBloc() : super(const FiltersState.initial()) {
+    on<FilterScreenActiveEvent>(_onFilterScreenActiveEvent);
     on<InitFiltersEvent>(_onInitFiltersEvent);
     on<FiltersBrandChanged>(_onBrandChanged);
     on<FiltersModelChanged>(_onModelChanged);
@@ -22,6 +23,13 @@ class FiltersBloc extends Bloc<FiltersEvent, FiltersState> {
     on<FiltersYearRangeChanged>(_onYearRangeChanged);
     on<FiltersApplyRequested>(_onApplyRequested);
     on<FiltersResetRequested>(_onResetRequested);
+  }
+
+  Future<void> _onFilterScreenActiveEvent(
+    FilterScreenActiveEvent event,
+    Emitter<FiltersState> emit,
+  ) async {
+    _initialFilterState = state;
   }
 
   Future<void> _onInitFiltersEvent(
@@ -43,27 +51,40 @@ class FiltersBloc extends Bloc<FiltersEvent, FiltersState> {
       return brand.name == event.brand;
     }).first;
 
-    emit(state.copyWith(
-      selectedBrand: event.brand,
-      clearSelectedBrand: event.brand == null,
-      clearSelectedModel: true,
-      clearSelectedSeries: true,
-      allModels: [...selectedBrandModel.models.map((model) => model.name)],
-      availableSeries: const [],
-    ));
+    emit(
+      state.copyWith(
+        selectedBrand: event.brand,
+        availableModels: [
+          ...selectedBrandModel.models.map((model) => model.name)
+        ],
+        availableSeries: const [],
+        carFilterViewModel: state.carFilterViewModel.copyWith(
+          selectedBrand: event.brand,
+        ),
+      ),
+    );
   }
 
   void _onModelChanged(
     FiltersModelChanged event,
     Emitter<FiltersState> emit,
   ) {
-    List<String> filteredSeries = [];
+    final availableSeries = AppConstants.brands
+        .where((brand) {
+          return brand.name == state.selectedBrand;
+        })
+        .first
+        .models
+        .where((model) => model.name == event.model)
+        .first
+        .serias;
 
     emit(state.copyWith(
       selectedModel: event.model,
-      clearSelectedModel: event.model == null,
-      clearSelectedSeries: true,
-      availableSeries: filteredSeries,
+      availableSeries: availableSeries,
+      carFilterViewModel: state.carFilterViewModel.copyWith(
+        selectedModel: event.model,
+      ),
     ));
   }
 
@@ -73,7 +94,9 @@ class FiltersBloc extends Bloc<FiltersEvent, FiltersState> {
   ) {
     emit(state.copyWith(
       selectedSeries: event.series,
-      clearSelectedSeries: event.series == null,
+      carFilterViewModel: state.carFilterViewModel.copyWith(
+        selectedSeria: event.series,
+      ),
     ));
   }
 
@@ -83,7 +106,9 @@ class FiltersBloc extends Bloc<FiltersEvent, FiltersState> {
   ) {
     emit(state.copyWith(
       selectedGearBox: event.gearBox,
-      clearSelectedGearBox: event.gearBox == null,
+      carFilterViewModel: state.carFilterViewModel.copyWith(
+        selectedGearBox: event.gearBox,
+      ),
     ));
   }
 
@@ -93,7 +118,9 @@ class FiltersBloc extends Bloc<FiltersEvent, FiltersState> {
   ) {
     emit(state.copyWith(
       selectedEngine: event.engine,
-      clearSelectedEngine: event.engine == null,
+      carFilterViewModel: state.carFilterViewModel.copyWith(
+        selectedEngine: event.engine,
+      ),
     ));
   }
 
@@ -101,14 +128,24 @@ class FiltersBloc extends Bloc<FiltersEvent, FiltersState> {
     FiltersPriceRangeChanged event,
     Emitter<FiltersState> emit,
   ) {
-    emit(state.copyWith(priceRange: event.range));
+    emit(state.copyWith(
+      priceRange: event.range,
+      carFilterViewModel: state.carFilterViewModel.copyWith(
+        priceRange: event.range,
+      ),
+    ));
   }
 
   void _onYearRangeChanged(
     FiltersYearRangeChanged event,
     Emitter<FiltersState> emit,
   ) {
-    emit(state.copyWith(yearRange: event.range));
+    emit(state.copyWith(
+      yearRange: event.range,
+      carFilterViewModel: state.carFilterViewModel.copyWith(
+        yearRange: event.range,
+      ),
+    ));
   }
 
   void _onApplyRequested(
@@ -120,30 +157,8 @@ class FiltersBloc extends Bloc<FiltersEvent, FiltersState> {
     FiltersResetRequested event,
     Emitter<FiltersState> emit,
   ) {
-    final allModels = _allBrandModels
-        .expand((b) => b.models)
-        .map((m) => m.name)
-        .toSet()
-        .toList()
-      ..sort();
-    final allSeries = _allBrandModels
-        .expand((b) => b.models)
-        .expand((m) => m.serias)
-        .toSet()
-        .toList()
-      ..sort();
-
-    emit(state.copyWith(
-      clearSelectedBrand: true,
-      clearSelectedModel: true,
-      clearSelectedSeries: true,
-      clearSelectedGearBox: true,
-      clearSelectedEngine: true,
-      priceRange: FiltersState.defaultPriceRange,
-      yearRange: FiltersState.defaultYearRange,
-      availableModels: allModels,
-      availableSeries: allSeries,
-    ));
+    final availableBrands = state.availableBrands;
+    emit(FiltersState.initial(availableBrands: availableBrands));
   }
 
   Future<void> _loadBrands() async {

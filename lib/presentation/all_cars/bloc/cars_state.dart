@@ -1,52 +1,34 @@
 import 'package:equatable/equatable.dart';
+import 'package:gegabyteauto/models/car_filter_view_model.dart';
 import 'package:gegabyteauto/models/car_view_model.dart';
 
-/// Enum representing loading states for the cars
 enum LoadState { initial, loading, loaded, error }
 
-/// View mode for displaying cars
 enum CarsViewMode { list, grid, reels }
 
 class CarsState extends Equatable {
-  /// Current load state
   final LoadState loadState;
-
-  /// Error message when loadState is error
   final String? errorMessage;
-
-  /// All loaded cars
   final List<CarViewModel> allCars;
-
-  /// Filtered cars (after applying filters)
-  final List<CarViewModel> filteredCars;
-
-  /// Current view mode
   final CarsViewMode viewMode;
-
-  /// Search query
-  final String searchQuery;
-
-  /// Active filter count for badge
-  final int activeFilterCount;
-
+  final String searchText;
+  final CarFilterViewModel appliedFilters;
   const CarsState({
     required this.loadState,
     this.errorMessage,
     required this.allCars,
-    required this.filteredCars,
     required this.viewMode,
-    required this.searchQuery,
-    required this.activeFilterCount,
+    required this.searchText,
+    required this.appliedFilters,
   });
 
   const CarsState.initial()
       : loadState = LoadState.initial,
         errorMessage = null,
         allCars = const [],
-        filteredCars = const [],
         viewMode = CarsViewMode.list,
-        searchQuery = '',
-        activeFilterCount = 0;
+        searchText = '',
+        appliedFilters = const CarFilterViewModel();
 
   bool get isLoading => loadState == LoadState.loading;
   bool get isLoaded => loadState == LoadState.loaded;
@@ -57,20 +39,18 @@ class CarsState extends Equatable {
     String? errorMessage,
     bool clearErrorMessage = false,
     List<CarViewModel>? allCars,
-    List<CarViewModel>? filteredCars,
     CarsViewMode? viewMode,
-    String? searchQuery,
-    int? activeFilterCount,
+    String? searchText,
+    CarFilterViewModel? appliedFilters
   }) {
     return CarsState(
+      appliedFilters: appliedFilters ?? this.appliedFilters,
       loadState: loadState ?? this.loadState,
       errorMessage:
           clearErrorMessage ? null : (errorMessage ?? this.errorMessage),
       allCars: allCars ?? this.allCars,
-      filteredCars: filteredCars ?? this.filteredCars,
       viewMode: viewMode ?? this.viewMode,
-      searchQuery: searchQuery ?? this.searchQuery,
-      activeFilterCount: activeFilterCount ?? this.activeFilterCount,
+      searchText: searchText ?? this.searchText,
     );
   }
 
@@ -79,9 +59,8 @@ class CarsState extends Equatable {
         loadState,
         errorMessage,
         allCars,
-        filteredCars,
         viewMode,
-        searchQuery,
-        activeFilterCount,
+        searchText,
+        appliedFilters,
       ];
 }

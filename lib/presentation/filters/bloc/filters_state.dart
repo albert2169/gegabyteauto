@@ -1,25 +1,22 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import 'package:gegabyteauto/models/car_filter_view_model.dart';
 import 'package:gegabyteauto/presentation/all_cars/bloc/cars_state.dart';
 
 export 'package:gegabyteauto/presentation/all_cars/bloc/cars_state.dart'
     show LoadState;
 
 enum RemovableFilter { brand, model, series, gearBox, engine }
-   const _gearBoxes = ['Automatic', 'Manual', 'CVT'];
-   const _engines = ['Gasoline', 'Diesel', 'Hybrid', 'Electric'];
 
+const _gearBoxes = ['Automatic', 'Manual', 'CVT'];
+const _engines = ['Gasoline', 'Diesel', 'Hybrid', 'Electric'];
 
 class FiltersState extends Equatable {
+  final CarFilterViewModel carFilterViewModel;
   static const RangeValues defaultPriceRange = RangeValues(0, 250000);
   static const RangeValues defaultYearRange = RangeValues(2015, 2025);
 
-  /// Current load state of the filters
   final LoadState loadState;
-
-  /// Error message when loadState is error
-  final String? errorMessage;
-
   final String? selectedBrand;
   final String? selectedModel;
   final String? selectedSeries;
@@ -27,20 +24,18 @@ class FiltersState extends Equatable {
   final String? selectedEngine;
   final RangeValues priceRange;
   final RangeValues yearRange;
-
   final List<String> availableBrands;
-  final List<String> availableModels; 
-  final List<String> availableSeries; 
+  final List<String> availableModels;
+  final List<String> availableSeries;
   final List<String> availableGearBoxes;
   final List<String> availableEngines;
-
   final List<String> allBrands;
   final List<String> allModels;
   final List<String> allSeries;
 
   const FiltersState({
+    this.carFilterViewModel = const CarFilterViewModel(),
     required this.loadState,
-    this.errorMessage,
     required this.selectedBrand,
     required this.selectedModel,
     required this.selectedSeries,
@@ -58,9 +53,9 @@ class FiltersState extends Equatable {
     required this.allSeries,
   });
 
-  const FiltersState.initial()
-      : loadState = LoadState.loaded,
-        errorMessage = null,
+  const FiltersState.initial({this.availableBrands = const []})
+      : carFilterViewModel = const CarFilterViewModel(),
+        loadState = LoadState.loaded,
         selectedBrand = null,
         selectedModel = null,
         selectedSeries = null,
@@ -68,7 +63,6 @@ class FiltersState extends Equatable {
         selectedEngine = null,
         priceRange = defaultPriceRange,
         yearRange = defaultYearRange,
-        availableBrands = const [],
         availableModels = const [],
         availableSeries = const [],
         availableGearBoxes = _gearBoxes,
@@ -104,18 +98,11 @@ class FiltersState extends Equatable {
 
   FiltersState copyWith({
     LoadState? loadState,
-    String? errorMessage,
-    bool clearErrorMessage = false,
     String? selectedBrand,
-    bool clearSelectedBrand = false,
     String? selectedModel,
-    bool clearSelectedModel = false,
     String? selectedSeries,
-    bool clearSelectedSeries = false,
     String? selectedGearBox,
-    bool clearSelectedGearBox = false,
     String? selectedEngine,
-    bool clearSelectedEngine = false,
     RangeValues? priceRange,
     RangeValues? yearRange,
     List<String>? availableBrands,
@@ -126,22 +113,16 @@ class FiltersState extends Equatable {
     List<String>? allBrands,
     List<String>? allModels,
     List<String>? allSeries,
+    CarFilterViewModel? carFilterViewModel,
   }) {
     return FiltersState(
+      carFilterViewModel: carFilterViewModel ?? this.carFilterViewModel,
       loadState: loadState ?? this.loadState,
-      errorMessage:
-          clearErrorMessage ? null : (errorMessage ?? this.errorMessage),
-      selectedBrand:
-          clearSelectedBrand ? null : (selectedBrand ?? this.selectedBrand),
-      selectedModel:
-          clearSelectedModel ? null : (selectedModel ?? this.selectedModel),
-      selectedSeries:
-          clearSelectedSeries ? null : (selectedSeries ?? this.selectedSeries),
-      selectedGearBox: clearSelectedGearBox
-          ? null
-          : (selectedGearBox ?? this.selectedGearBox),
-      selectedEngine:
-          clearSelectedEngine ? null : (selectedEngine ?? this.selectedEngine),
+      selectedBrand: (selectedBrand ?? this.selectedBrand),
+      selectedModel: (selectedModel ?? this.selectedModel),
+      selectedSeries: (selectedSeries ?? this.selectedSeries),
+      selectedGearBox: (selectedGearBox ?? this.selectedGearBox),
+      selectedEngine: (selectedEngine ?? this.selectedEngine),
       priceRange: priceRange ?? this.priceRange,
       yearRange: yearRange ?? this.yearRange,
       availableBrands: availableBrands ?? this.availableBrands,
@@ -157,8 +138,8 @@ class FiltersState extends Equatable {
 
   @override
   List<Object?> get props => [
+        carFilterViewModel,
         loadState,
-        errorMessage,
         selectedBrand,
         selectedModel,
         selectedSeries,

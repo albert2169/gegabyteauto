@@ -60,7 +60,7 @@ class FiltersActionButtons extends StatelessWidget {
                 child: ElevatedButton(
                   onPressed: () {
                     onApply?.call();
-                    context.router.maybePop(state);
+                    context.router.maybePop(state.carFilterViewModel);
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.primary,

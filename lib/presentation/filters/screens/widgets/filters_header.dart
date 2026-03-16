@@ -19,7 +19,9 @@ class FiltersHeader extends StatelessWidget implements PreferredSizeWidget {
       backgroundColor: AppColors.background,
       elevation: 0,
       leading: IconButton(
-        onPressed: () => context.router.maybePop(),
+        onPressed: () {
+          context.router.maybePop(null);
+        },
         icon: const Icon(Icons.close, color: Colors.white),
       ),
       title: const Text(

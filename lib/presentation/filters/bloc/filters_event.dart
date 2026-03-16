@@ -10,9 +10,10 @@ abstract class FiltersEvent extends Equatable {
 
 class InitFiltersEvent extends FiltersEvent {
   const InitFiltersEvent();
+}
 
-  @override
-  List<Object?> get props => [];
+class FilterScreenActiveEvent extends FiltersEvent {
+  const FilterScreenActiveEvent();
 }
 
 class FiltersBrandChanged extends FiltersEvent {

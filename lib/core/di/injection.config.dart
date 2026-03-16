@@ -37,7 +37,7 @@ extension GetItInjectableX on GetIt {
         () => CarRepository(gh<ICarRemoteDataSource>()));
     gh.lazySingleton<FiltersBloc>(() => FiltersBloc());
     gh.factory<AuthBloc>(() => AuthBloc(gh<IAuthRepository>()));
-    gh.factory<CarsBloc>(() => CarsBloc(gh<ICarRepository>()));
+    gh.lazySingleton<CarsBloc>(() => CarsBloc(gh<ICarRepository>()));
     return this;
   }
 }

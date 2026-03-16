@@ -1,3 +1,4 @@
+import 'package:gegabyteauto/models/car_filter_view_model.dart';
 import 'package:gegabyteauto/models/car_view_model.dart';
 import 'package:injectable/injectable.dart';
 import 'package:gegabyteauto/core/error/failures.dart';
@@ -11,9 +12,13 @@ class CarRepository implements ICarRepository {
   const CarRepository(this._dataSource);
 
   @override
-  Future<List<CarViewModel>> getCars() async {
+  Future<List<CarViewModel>> getCars({
+    required String searchText,
+    required CarFilterViewModel appliedFilters,
+  }) async {
     try {
-      final dtos = await _dataSource.getCars();
+      final dtos = await _dataSource.getCars(
+          searchText: searchText, appliedFilters: appliedFilters);
       return dtos.map((dto) => dto.toViewModel()).toList();
     } catch (e) {
       throw const ServerFailure('Failed to load cars. Please try again.');

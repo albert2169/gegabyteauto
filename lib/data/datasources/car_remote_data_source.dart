@@ -1,16 +1,18 @@
+import 'package:gegabyteauto/models/car_filter_view_model.dart';
 import 'package:injectable/injectable.dart';
 import 'package:gegabyteauto/data/dtos/car_dto.dart';
 import 'package:gegabyteauto/data/dtos/car_image_dto.dart';
 import 'package:gegabyteauto/data/dtos/car_owner_info_dto.dart';
 
 abstract class ICarRemoteDataSource {
-  Future<List<CarDto>> getCars();
+  Future<List<CarDto>> getCars({
+    required String searchText,
+    required CarFilterViewModel appliedFilters,
+  });
 }
 
 @LazySingleton(as: ICarRemoteDataSource)
 class CarRemoteDataSource implements ICarRemoteDataSource {
-  // ─── Mock data (replace with real HTTP calls later) ─────────────────────────
-
   static const String _brandsDir = 'assets/car_brands/';
 
   static const _ownerNames = [
@@ -194,12 +196,21 @@ class CarRemoteDataSource implements ICarRemoteDataSource {
     return '\$$result';
   }
 
-  @override
-  Future<List<CarDto>> getCars() async {
-    // Simulate network delay
-    await Future.delayed(const Duration(milliseconds: 1200));
+  int _parsePrice(String price) {
+    return int.tryParse(price.replaceAll(RegExp(r'[^0-9]'), '')) ?? 0;
+  }
 
-    return List<CarDto>.generate(50, (index) {
+  bool _inRange(num value, num min, num max) {
+    return value >= min && value <= max;
+  }
+
+  @override
+  Future<List<CarDto>> getCars({
+    required String searchText,
+    required CarFilterViewModel appliedFilters,
+  }) async {
+    await Future.delayed(const Duration(milliseconds: 1200));
+    final cars = List<CarDto>.generate(50, (index) {
       final data = _carData[index % _carData.length];
 
       return CarDto(
@@ -238,5 +249,60 @@ class CarRemoteDataSource implements ICarRemoteDataSource {
             'All options available. Test drive by appointment.',
       );
     });
+
+    final normalizedQuery = searchText.trim().toLowerCase();
+
+    final filtered = cars.where((car) {
+      final matchesBrand = appliedFilters.selectedBrand == null ||
+          car.brand.toLowerCase() ==
+              appliedFilters.selectedBrand!.toLowerCase();
+
+      final matchesModel = appliedFilters.selectedModel == null ||
+          car.model.toLowerCase() ==
+              appliedFilters.selectedModel!.toLowerCase();
+
+      final matchesSeria = appliedFilters.selectedSeria == null ||
+          car.seria.toLowerCase() ==
+              appliedFilters.selectedSeria!.toLowerCase();
+
+      final matchesGearBox = appliedFilters.selectedGearBox == null ||
+          car.gearBox.toLowerCase() ==
+              appliedFilters.selectedGearBox!.toLowerCase();
+
+      final matchesEngine = appliedFilters.selectedEngine == null ||
+          car.engine.toLowerCase() ==
+              appliedFilters.selectedEngine!.toLowerCase();
+
+      final price = _parsePrice(car.price);
+      final priceRange = appliedFilters.priceRange;
+      final matchesPrice = priceRange == null ||
+          _inRange(price, priceRange.start, priceRange.end);
+
+      final year = int.tryParse(car.year) ?? 0;
+      final yearRange = appliedFilters.yearRange;
+      final matchesYear =
+          yearRange == null || _inRange(year, yearRange.start, yearRange.end);
+
+      final matchesSearch = normalizedQuery.isEmpty ||
+          car.brand.toLowerCase().contains(normalizedQuery) ||
+          car.model.toLowerCase().contains(normalizedQuery) ||
+          car.seria.toLowerCase().contains(normalizedQuery) ||
+          car.color.toLowerCase().contains(normalizedQuery) ||
+          car.engine.toLowerCase().contains(normalizedQuery) ||
+          car.gearBox.toLowerCase().contains(normalizedQuery) ||
+          car.owner.city.toLowerCase().contains(normalizedQuery) ||
+          car.description.toLowerCase().contains(normalizedQuery);
+
+      return matchesBrand &&
+          matchesModel &&
+          matchesSeria &&
+          matchesGearBox &&
+          matchesEngine &&
+          matchesPrice &&
+          matchesYear &&
+          matchesSearch;
+    }).toList();
+
+    return filtered;
   }
 }

@@ -4,24 +4,23 @@ import 'package:gegabyteauto/core/theme/app_colors.dart';
 import 'package:gegabyteauto/core/theme/app_text_styles.dart';
 import 'package:gegabyteauto/presentation/all_cars/bloc/cars_bloc.dart';
 import 'package:gegabyteauto/presentation/all_cars/bloc/cars_event.dart';
-import 'package:gegabyteauto/presentation/all_cars/bloc/cars_state.dart';
+import 'package:gegabyteauto/presentation/filters/bloc/filters_bloc.dart';
+import 'package:gegabyteauto/presentation/filters/bloc/filters_state.dart';
 
 class AllCarsCountBar extends StatelessWidget {
-  const AllCarsCountBar({super.key});
+  final int carsLength;
+  const AllCarsCountBar({super.key, required this.carsLength});
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<CarsBloc, CarsState>(
-      buildWhen: (previous, current) =>
-          previous.filteredCars.length != current.filteredCars.length ||
-          previous.activeFilterCount != current.activeFilterCount,
+    return BlocBuilder<FiltersBloc, FiltersState>(
       builder: (context, state) {
         return Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
           child: Row(
             children: [
               Text(
-                '${state.filteredCars.length} cars found',
+                '$carsLength cars found',
                 style: AppTextStyles.bodySmall
                     .copyWith(color: AppColors.textSecondary),
               ),

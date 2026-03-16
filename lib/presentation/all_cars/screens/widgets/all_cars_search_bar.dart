@@ -4,29 +4,28 @@ import 'package:gegabyteauto/core/theme/app_colors.dart';
 import 'package:gegabyteauto/core/theme/app_text_styles.dart';
 import 'package:gegabyteauto/presentation/all_cars/bloc/cars_bloc.dart';
 import 'package:gegabyteauto/presentation/all_cars/bloc/cars_event.dart';
-import 'package:gegabyteauto/presentation/all_cars/bloc/cars_state.dart';
+import 'package:gegabyteauto/presentation/filters/bloc/filters_bloc.dart';
+import 'package:gegabyteauto/presentation/filters/bloc/filters_state.dart';
 
 class AllCarsSearchBar extends StatefulWidget {
+  final TextEditingController searchEditingController;
   final VoidCallback? onFiltersTap;
 
-  const AllCarsSearchBar({super.key, this.onFiltersTap});
+  const AllCarsSearchBar(
+      {super.key, this.onFiltersTap, required this.searchEditingController});
 
   @override
   State<AllCarsSearchBar> createState() => _AllCarsSearchBarState();
 }
 
 class _AllCarsSearchBarState extends State<AllCarsSearchBar> {
-  late final TextEditingController _searchController;
-
   @override
   void initState() {
     super.initState();
-    _searchController = TextEditingController();
   }
 
   @override
   void dispose() {
-    _searchController.dispose();
     super.dispose();
   }
 
@@ -44,10 +43,14 @@ class _AllCarsSearchBarState extends State<AllCarsSearchBar> {
                 borderRadius: BorderRadius.circular(12),
               ),
               child: TextField(
-                controller: _searchController,
+                controller: widget.searchEditingController,
                 style: AppTextStyles.bodyMedium,
                 onChanged: (value) {
-                  context.read<CarsBloc>().add(CarsSearchQueryChanged(value));
+                  context.read<CarsBloc>().add(
+                        FetchAllCarsEvent(
+                          searchText: value,
+                        ),
+                      );
                 },
                 decoration: InputDecoration(
                   hintText: 'Search brand, model, color...',
@@ -60,13 +63,13 @@ class _AllCarsSearchBarState extends State<AllCarsSearchBar> {
                     color: Colors.white.withValues(alpha: 0.4),
                     size: 22,
                   ),
-                  suffixIcon: _searchController.text.isNotEmpty
+                  suffixIcon: widget.searchEditingController.text.isNotEmpty
                       ? GestureDetector(
                           onTap: () {
-                            _searchController.clear();
+                            widget.searchEditingController.clear();
                             context
                                 .read<CarsBloc>()
-                                .add(const CarsSearchQueryChanged(''));
+                                .add(const FetchAllCarsEvent(searchText: ''));
                           },
                           child: Icon(
                             Icons.close,
@@ -82,9 +85,7 @@ class _AllCarsSearchBarState extends State<AllCarsSearchBar> {
             ),
           ),
           const SizedBox(width: 10),
-          BlocBuilder<CarsBloc, CarsState>(
-            buildWhen: (previous, current) =>
-                previous.activeFilterCount != current.activeFilterCount,
+          BlocBuilder<FiltersBloc, FiltersState>(
             builder: (context, state) {
               return GestureDetector(
                 onTap: widget.onFiltersTap,
