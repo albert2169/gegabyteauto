@@ -53,12 +53,16 @@ class FiltersState extends Equatable {
     required this.allSeries,
   });
 
-  const FiltersState.initial({this.availableBrands = const []})
-      : carFilterViewModel = const CarFilterViewModel(),
-        loadState = LoadState.loaded,
-        selectedBrand = null,
-        selectedModel = null,
-        selectedSeries = null,
+  const FiltersState.initial({
+    this.availableBrands = const [],
+    this.carFilterViewModel = const CarFilterViewModel(),
+    String? brand,
+    String? model,
+    String? seria,
+  })  : loadState = LoadState.loaded,
+        selectedBrand = brand,
+        selectedModel = model,
+        selectedSeries = seria,
         selectedGearBox = null,
         selectedEngine = null,
         priceRange = defaultPriceRange,

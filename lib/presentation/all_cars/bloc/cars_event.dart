@@ -32,10 +32,6 @@ class CarsViewModeChanged extends CarsEvent {
   List<Object?> get props => [viewMode];
 }
 
-
-
-
-
 class CarsFiltersClear extends CarsEvent {
   const CarsFiltersClear();
 }

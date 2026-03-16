@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gegabyteauto/app_constants/app_constants.dart';
 import 'package:gegabyteauto/models/car_brand_view_model.dart';
 import 'package:gegabyteauto/models/car_filter_chip.dart';
-import 'package:gegabyteauto/models/car_filter_view_model.dart';
 
 import 'filters_event.dart';
 import 'filters_state.dart';
@@ -14,6 +13,7 @@ class FiltersBloc extends Bloc<FiltersEvent, FiltersState> {
   late FiltersState _initialFilterState;
 
   FiltersBloc() : super(const FiltersState.initial()) {
+    on<ApplyFiltersFromModelScreenEvent>(_onApplyFiltersFromModelScreenEvent);
     on<RemoveASingleChipEvent>(_onRemoveASingleChipEvent);
     on<ApplyFiltersEvent>(_onApplyFiltersEvent);
     on<CloseWithoutApplyingEvent>(_onCloseWithoutApplyingEvent);
@@ -65,6 +65,19 @@ class FiltersBloc extends Bloc<FiltersEvent, FiltersState> {
         carFilterViewModel: carFilterViewModel,
       ),
     );
+  }
+
+  Future<void> _onApplyFiltersFromModelScreenEvent(
+    ApplyFiltersFromModelScreenEvent event,
+    Emitter<FiltersState> emit,
+  ) async {
+    emit(FiltersState.initial(
+      brand: event.appliedFilter.selectedBrand,
+      model: event.appliedFilter.selectedModel,
+      seria: event.appliedFilter.selectedSeria,
+      availableBrands: state.availableBrands,
+      carFilterViewModel: event.appliedFilter,
+    ));
   }
 
   Future<void> _onApplyFiltersEvent(

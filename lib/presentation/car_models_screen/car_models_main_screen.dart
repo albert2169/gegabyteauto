@@ -1,11 +1,16 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:gegabyteauto/core/di/injection.dart';
 import 'package:gegabyteauto/core/router/app_router.dart';
 import 'package:gegabyteauto/core/theme/app_colors.dart';
 import 'package:gegabyteauto/models/car_brand_view_model.dart';
+import 'package:gegabyteauto/models/car_filter_view_model.dart';
+import 'package:gegabyteauto/presentation/all_cars/bloc/cars_bloc.dart';
+import 'package:gegabyteauto/presentation/all_cars/bloc/cars_event.dart';
 import 'package:gegabyteauto/presentation/car_models_screen/widgets/car_model_item.dart';
 import 'package:gegabyteauto/presentation/car_models_screen/widgets/car_models_header.dart';
-import 'package:gegabyteauto/presentation/filters/bloc/filters_state.dart';
+import 'package:gegabyteauto/presentation/filters/bloc/filters_bloc.dart';
+import 'package:gegabyteauto/presentation/filters/bloc/filters_event.dart';
 
 @RoutePage()
 class CarModelsScreen extends StatefulWidget {
@@ -21,7 +26,6 @@ class _CarModelsScreenState extends State<CarModelsScreen> {
   final Set<int> _openIndices = {};
 
   void _onModelTap(int index) {
-
     setState(() {
       if (_openIndices.contains(index)) {
         _openIndices.remove(index);
@@ -35,39 +39,30 @@ class _CarModelsScreenState extends State<CarModelsScreen> {
     if (!mounted) return;
     await Future.delayed(const Duration(milliseconds: 50));
     if (!mounted) return;
-    setState(() {
-    });
+    setState(() {});
     await Future.delayed(const Duration(milliseconds: 350));
     if (!mounted) return;
-  
   }
 
   void _onSeriaTap(String modelName, String seria) {
-    // getIt<FiltersBloc>().add()
     final brandName = widget.brand.name;
-    final filtersState = FiltersState(
-      loadState: LoadState.loaded,
+    final appliedFilters = CarFilterViewModel(
       selectedBrand: brandName,
       selectedModel: modelName,
-      selectedSeries: seria,
-      selectedGearBox: null,
-      selectedEngine: null,
-      priceRange: FiltersState.defaultPriceRange,
-      yearRange: FiltersState.defaultYearRange,
-      availableBrands: const [],
-      availableModels: const [],
-      availableSeries: const [],
-      availableGearBoxes: const [],
-      availableEngines: const [],
-      allBrands: const [],
-      allModels: const [],
-      allSeries: const [],
+      selectedSeria: seria,
+    );
+    getIt<FiltersBloc>().add(
+      ApplyFiltersFromModelScreenEvent(
+        appliedFilter: appliedFilters,
+      ),
     );
 
-    context.router.pushAndPopUntil(
-      ShellRoute(children: [AllCarsRoute(preAppliedFilters: filtersState)]),
-      predicate: (route) => false,
-    );
+    getIt<CarsBloc>().add(FetchAllCarsEvent(appliedFilters: appliedFilters));
+    context.router.replaceAll([
+      ShellRoute(children: [
+        AllCarsRoute(),
+      ]),
+    ]);
   }
 
   @override

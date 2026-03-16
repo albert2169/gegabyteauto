@@ -23,6 +23,12 @@ class RemoveASingleChipEvent extends FiltersEvent {
   });
 }
 
+class ApplyFiltersFromModelScreenEvent extends FiltersEvent {
+  final CarFilterViewModel appliedFilter;
+  const ApplyFiltersFromModelScreenEvent(
+      {required this.appliedFilter});
+}
+
 class ApplyFiltersEvent extends FiltersEvent {
   const ApplyFiltersEvent();
 }

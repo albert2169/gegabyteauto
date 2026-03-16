@@ -9,7 +9,7 @@ class CarModelItem extends StatelessWidget {
   final bool isOpen;
   final VoidCallback onTap;
   final Future<void> Function() onHideCompleted;
-  final void Function(String seria)? onSeriaTap;
+  final void Function(String seria) onSeriaTap;
 
   const CarModelItem({
     super.key,
@@ -19,7 +19,7 @@ class CarModelItem extends StatelessWidget {
     required this.isOpen,
     required this.onTap,
     required this.onHideCompleted,
-    this.onSeriaTap,
+    required this.onSeriaTap,
   });
 
   @override
@@ -62,6 +62,7 @@ class CarModelItem extends StatelessWidget {
                       key: ValueKey('serias_$index'),
                       padding: const EdgeInsets.only(left: 20.0, bottom: 8.0),
                       child: StaggeredSerias(
+                        onSeriaTap: onSeriaTap,
                         serias: model.serias,
                         open: isOpen,
                         onHideCompleted: onHideCompleted,

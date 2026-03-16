@@ -4,14 +4,14 @@ class StaggeredSerias extends StatefulWidget {
   final List<String> serias;
   final bool open;
   final VoidCallback? onHideCompleted;
-  final void Function(String seria)? onSeriaTap;
+  final void Function(String seria) onSeriaTap;
 
   const StaggeredSerias({
     super.key,
     required this.serias,
     required this.open,
+    required this.onSeriaTap,
     this.onHideCompleted,
-    this.onSeriaTap,
   });
 
   @override
@@ -77,7 +77,7 @@ class _StaggeredSeriasState extends State<StaggeredSerias> {
               duration: const Duration(milliseconds: 500),
               child: GestureDetector(
                 behavior: HitTestBehavior.opaque,
-                onTap: () => widget.onSeriaTap?.call(widget.serias[i]),
+                onTap: () => widget.onSeriaTap.call(widget.serias[i]),
                 child: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8.0),
                   child: SizedBox(
