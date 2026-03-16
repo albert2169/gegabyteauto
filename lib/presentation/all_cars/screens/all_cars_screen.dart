@@ -8,7 +8,6 @@ import 'package:gegabyteauto/presentation/all_cars/bloc/cars_bloc.dart';
 import 'package:gegabyteauto/presentation/all_cars/bloc/cars_event.dart';
 import 'package:gegabyteauto/presentation/all_cars/bloc/cars_state.dart';
 import 'package:gegabyteauto/presentation/all_cars/screens/widgets/all_cars_app_bar.dart';
-import 'package:gegabyteauto/presentation/all_cars/screens/widgets/all_cars_count_bar.dart';
 import 'package:gegabyteauto/presentation/all_cars/screens/widgets/all_cars_empty_state.dart';
 import 'package:gegabyteauto/presentation/all_cars/screens/widgets/all_cars_error_view.dart';
 import 'package:gegabyteauto/presentation/all_cars/screens/widgets/all_cars_list_view.dart';
@@ -95,7 +94,7 @@ class _AllCarsBody extends StatelessWidget {
             AllCarsSearchBar(
               onFiltersTap: () => _onFiltersTap(context),
             ),
-            const AllCarsCountBar(),
+       //     const AllCarsCountBar(),
             Expanded(
               child: AnimatedSwitcher(
                 duration: const Duration(milliseconds: 300),

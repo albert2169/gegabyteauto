@@ -1,11 +1,15 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import 'package:gegabyteauto/app_constants/app_constants.dart';
 import 'package:gegabyteauto/presentation/all_cars/bloc/cars_state.dart';
 
 export 'package:gegabyteauto/presentation/all_cars/bloc/cars_state.dart'
     show LoadState;
 
 enum RemovableFilter { brand, model, series, gearBox, engine }
+   const _gearBoxes = ['Automatic', 'Manual', 'CVT'];
+   const _engines = ['Gasoline', 'Diesel', 'Hybrid', 'Electric'];
+
 
 class FiltersState extends Equatable {
   static const RangeValues defaultPriceRange = RangeValues(0, 250000);
@@ -56,7 +60,7 @@ class FiltersState extends Equatable {
   });
 
   const FiltersState.initial()
-      : loadState = LoadState.initial,
+      : loadState = LoadState.loaded,
         errorMessage = null,
         selectedBrand = null,
         selectedModel = null,
@@ -68,8 +72,8 @@ class FiltersState extends Equatable {
         availableBrands = const [],
         availableModels = const [],
         availableSeries = const [],
-        availableGearBoxes = const [],
-        availableEngines = const [],
+        availableGearBoxes = _gearBoxes,
+        availableEngines = _engines,
         allBrands = const [],
         allModels = const [],
         allSeries = const [];

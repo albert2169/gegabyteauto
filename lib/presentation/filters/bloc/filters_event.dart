@@ -8,9 +8,7 @@ abstract class FiltersEvent extends Equatable {
   List<Object?> get props => [];
 }
 
-class FiltersLoadRequested extends FiltersEvent {
-  const FiltersLoadRequested();
-}
+
 
 class FiltersBrandChanged extends FiltersEvent {
   final String? brand;

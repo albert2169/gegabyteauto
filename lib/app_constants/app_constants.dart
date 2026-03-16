@@ -4,11 +4,11 @@ import 'package:gegabyteauto/models/car_owner_info_view_model.dart';
 import 'package:gegabyteauto/models/car_view_model.dart';
 import 'package:gegabyteauto/models/single_car_info_view_model.dart';
 
-import 'models/car_brand_view_model.dart';
+import '../models/car_brand_view_model.dart';
 
 class AppConstants {
   AppConstants._();
-
+ 
   static const String carBrandsAssetDir = 'assets/car_brands/';
 
   static final List<CarBrandViewModel> mockCarBrandViewModels = [

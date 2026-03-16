@@ -9,6 +9,7 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:gegabyteauto/presentation/filters/bloc/filters_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 
@@ -34,6 +35,7 @@ extension GetItInjectableX on GetIt {
     gh.lazySingleton<IAuthRepository>(() => AuthRepository());
     gh.lazySingleton<ICarRepository>(
         () => CarRepository(gh<ICarRemoteDataSource>()));
+    gh.lazySingleton<FiltersBloc>(() => FiltersBloc());
     gh.factory<AuthBloc>(() => AuthBloc(gh<IAuthRepository>()));
     gh.factory<CarsBloc>(() => CarsBloc(gh<ICarRepository>()));
     return this;

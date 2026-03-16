@@ -1,10 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gegabyteauto/core/di/injection.dart';
 import 'package:gegabyteauto/core/theme/app_colors.dart';
 
 import '../bloc/filters_bloc.dart';
-import '../bloc/filters_event.dart';
 import '../bloc/filters_state.dart';
 import 'widgets/filter_brand_dropdown.dart';
 import 'widgets/filter_engine_dropdown.dart';
@@ -22,8 +22,8 @@ class FiltersScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => FiltersBloc()..add(const FiltersLoadRequested()),
+    return BlocProvider.value(
+      value: getIt<FiltersBloc>(),
       child: const _FiltersScreenContent(),
     );
   }
