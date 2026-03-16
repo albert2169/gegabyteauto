@@ -36,15 +36,18 @@ class _HomeScreenState extends State<HomeScreen> {
             SliverPadding(
               padding: const EdgeInsets.all(20),
               sliver: SliverList(
-                delegate: SliverChildListDelegate([
-                  CustomSearchBar(),
-                  const SizedBox(height: 32),
-                  MainScreenSections(),
-                  const SizedBox(height: 32),
-                  CategoriesSectionHeader(),
-                  const SizedBox(height: 16),
-                  MainScreenCarCategories(),
-                ]),
+                delegate: SliverChildListDelegate(
+                  [
+                    CustomSearchBar(),
+                    const SizedBox(height: 32),
+                    MainScreenSections(),
+                    const SizedBox(height: 32),
+                    CategoriesSectionHeader(),
+                    const SizedBox(height: 16),
+                    MainScreenCarCategories(),
+                    
+                  ],
+                ),
               ),
             ),
           ],

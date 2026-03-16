@@ -35,7 +35,6 @@ class _SingleCarScreenState extends State<SingleCarScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   _buildTitleSection(info),
-                  const SizedBox(height: 20),
                   _buildQuickStats(info),
                   const SizedBox(height: 24),
                   _buildDetailsSection(info),
@@ -101,7 +100,6 @@ class _SingleCarScreenState extends State<SingleCarScreen> {
         background: Stack(
           fit: StackFit.expand,
           children: [
-            // Image carousel
             PageView.builder(
               itemCount: images.isEmpty ? 1 : images.length,
               onPageChanged: (i) => setState(() => _currentImageIndex = i),
@@ -123,7 +121,6 @@ class _SingleCarScreenState extends State<SingleCarScreen> {
                 return _fallbackImage();
               },
             ),
-            // Gradient overlay
             Positioned(
               bottom: 0,
               left: 0,
@@ -142,7 +139,6 @@ class _SingleCarScreenState extends State<SingleCarScreen> {
                 ),
               ),
             ),
-            // Page indicator
             if (images.length > 1)
               Positioned(
                 bottom: 16,
@@ -238,10 +234,10 @@ class _SingleCarScreenState extends State<SingleCarScreen> {
 
   Widget _buildQuickStats(dynamic info) {
     final stats = [
-      ('Year', info.year, Icons.calendar_today_rounded),
-      ('Mileage', info.mileage, Icons.speed_rounded),
-      ('Gearbox', info.gearBox, Icons.settings_rounded),
-      ('Condition', info.condition, Icons.star_rounded),
+      ('Տարի', info.year, Icons.calendar_today_rounded),
+      ('Վազք', info.mileage, Icons.speed_rounded),
+      ('Շարժիչ', info.gearBox, Icons.settings_rounded),
+      ('Վիճակ', info.condition, Icons.star_rounded),
     ];
 
     return GridView.count(
@@ -294,7 +290,8 @@ class _SingleCarScreenState extends State<SingleCarScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('Specifications', style: AppTextStyles.headlineMedium),
+        Text('Տրանսպորտային միջոցի տվյալներ',
+            style: AppTextStyles.headlineMedium),
         const SizedBox(height: 14),
         Container(
           decoration: BoxDecoration(
@@ -304,12 +301,12 @@ class _SingleCarScreenState extends State<SingleCarScreen> {
           ),
           child: Column(
             children: [
-              _DetailRow('Engine', info.engine, isFirst: true),
-              _DetailRow('Engine Volume', info.engineVolume),
-              _DetailRow('Color', info.color),
-              _DetailRow('Interior', info.interior),
-              _DetailRow('Gearbox', info.gearBox),
-              _DetailRow('Condition', info.condition, isLast: true),
+              _DetailRow('Շարժիչ', info.engine, isFirst: true),
+              _DetailRow('Շարժիչի ծավալ', info.engineVolume),
+              _DetailRow('Սրահի գույն', info.color),
+              _DetailRow('Սրահի նյութ', info.interior),
+              _DetailRow('Փոխանցման տուփ', info.gearBox),
+              _DetailRow('Վիճակ', info.condition, isLast: true),
             ],
           ),
         ),
@@ -322,7 +319,7 @@ class _SingleCarScreenState extends State<SingleCarScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('Description', style: AppTextStyles.headlineMedium),
+        Text('Բնութագրություն', style: AppTextStyles.headlineMedium),
         const SizedBox(height: 12),
         Text(
           info.description,
@@ -383,11 +380,11 @@ class _SingleCarScreenState extends State<SingleCarScreen> {
             child: Container(
               height: 56,
               decoration: BoxDecoration(
-                gradient: AppColors.primaryGradient,
+                gradient: AppColors.secondaryGradient,
                 borderRadius: BorderRadius.circular(16),
                 boxShadow: [
                   BoxShadow(
-                    color: AppColors.primary.withValues(alpha: 0.3),
+                    color: AppColors.success.withValues(alpha: 0.3),
                     blurRadius: 16,
                     offset: const Offset(0, 6),
                   ),
@@ -397,12 +394,12 @@ class _SingleCarScreenState extends State<SingleCarScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Icon(Icons.phone_rounded,
-                      color: AppColors.background, size: 20),
+                      color: AppColors.textPrimary, size: 20),
                   const SizedBox(width: 10),
                   Text(
-                    'Call Owner',
+                    'Զանգահարել',
                     style: AppTextStyles.labelLarge.copyWith(
-                      color: AppColors.background,
+                      color: AppColors.textPrimary,
                       fontSize: 16,
                     ),
                   ),
@@ -420,8 +417,7 @@ class _SingleCarScreenState extends State<SingleCarScreen> {
             borderRadius: BorderRadius.circular(16),
             border: Border.all(color: AppColors.border, width: 0.5),
           ),
-          child: const Icon(Icons.chat_bubble_outline_rounded,
-              color: AppColors.primary, size: 22),
+          child: const Icon(Icons.chat, color: AppColors.primary, size: 22),
         ),
       ],
     );

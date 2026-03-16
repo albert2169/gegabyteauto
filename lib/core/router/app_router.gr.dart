@@ -170,6 +170,22 @@ class HomeRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [MainMessageScreen]
+class MainMessageRoute extends PageRouteInfo<void> {
+  const MainMessageRoute({List<PageRouteInfo>? children})
+    : super(MainMessageRoute.name, initialChildren: children);
+
+  static const String name = 'MainMessageRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const MainMessageScreen();
+    },
+  );
+}
+
+/// generated route for
 /// [ProfileScreen]
 class ProfileRoute extends PageRouteInfo<void> {
   const ProfileRoute({List<PageRouteInfo>? children})

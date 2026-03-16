@@ -4,8 +4,9 @@ import 'package:gegabyteauto/core/theme/app_colors.dart';
 import 'package:gegabyteauto/core/theme/app_text_styles.dart';
 
 @RoutePage()
-class FavoritesScreen extends StatelessWidget {
-  const FavoritesScreen({super.key});
+
+class MainMessageScreen extends StatelessWidget {
+  const MainMessageScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -31,10 +32,10 @@ class FavoritesScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
-              Text('Չկա պահպանված մեքենա', style: AppTextStyles.headlineMedium),
+              Text('Չկան հաղորդագրություններ', style: AppTextStyles.headlineMedium),
               const SizedBox(height: 8),
               Text(
-                'Պահպխանված մեքենաները կհայտնվեն այստեղ',
+                'Ձեր հաղորդագրությունները կհայտնվեն այստեղ',
                 style: AppTextStyles.bodyMedium
                     .copyWith(color: AppColors.textSecondary),
               ),

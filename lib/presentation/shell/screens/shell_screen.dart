@@ -3,7 +3,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:gegabyteauto/core/router/app_router.dart';
 import 'package:gegabyteauto/core/theme/app_colors.dart';
-import 'package:gegabyteauto/core/theme/app_text_styles.dart';
 
 @RoutePage()
 class ShellScreen extends StatelessWidget {
@@ -15,6 +14,7 @@ class ShellScreen extends StatelessWidget {
       routes: [
         const HomeRoute(),
         AllCarsRoute(),
+        const MainMessageRoute(),
         const FavoritesRoute(),
         const ProfileRoute(),
       ],
@@ -48,21 +48,25 @@ class _GegabyteBottomNavBar extends StatelessWidget {
 
   static const _items = [
     _NavItem(
-        icon: Icons.home_outlined,
-        selectedIcon: Icons.home_rounded,
-        label: 'Home'),
+      icon: Icons.home_outlined,
+      selectedIcon: Icons.home_rounded,
+    ),
     _NavItem(
-        icon: Icons.search_rounded,
-        selectedIcon: Icons.search_rounded,
-        label: 'Browse'),
+      icon: Icons.search_rounded,
+      selectedIcon: Icons.search_rounded,
+    ),
     _NavItem(
-        icon: Icons.favorite_border_rounded,
-        selectedIcon: Icons.favorite_rounded,
-        label: 'Saved'),
+      icon: Icons.send,
+      selectedIcon: Icons.send,
+    ),
     _NavItem(
-        icon: Icons.person_outline_rounded,
-        selectedIcon: Icons.person_rounded,
-        label: 'Profile'),
+      icon: Icons.favorite_border_rounded,
+      selectedIcon: Icons.favorite_rounded,
+    ),
+    _NavItem(
+      icon: Icons.person_outline_rounded,
+      selectedIcon: Icons.person_rounded,
+    ),
   ];
 
   @override
@@ -116,26 +120,13 @@ class _GegabyteBottomNavBar extends StatelessWidget {
                               duration: const Duration(milliseconds: 220),
                               child: Icon(
                                 isSelected ? item.selectedIcon : item.icon,
-                                key: ValueKey('${item.label}_$isSelected'),
-                                size: 22,
+                                key: ValueKey(
+                                    '${item.selectedIcon}_$isSelected'),
+                                size: 28,
                                 color: isSelected
                                     ? AppColors.primary
                                     : AppColors.textSecondary,
                               ),
-                            ),
-                            const SizedBox(height: 4),
-                            AnimatedDefaultTextStyle(
-                              duration: const Duration(milliseconds: 220),
-                              style: AppTextStyles.labelSmall.copyWith(
-                                color: isSelected
-                                    ? AppColors.primary
-                                    : AppColors.textSecondary,
-                                fontSize: 10,
-                                fontWeight: isSelected
-                                    ? FontWeight.w600
-                                    : FontWeight.w400,
-                              ),
-                              child: Text(item.label),
                             ),
                           ],
                         ),
@@ -155,11 +146,9 @@ class _GegabyteBottomNavBar extends StatelessWidget {
 class _NavItem {
   final IconData icon;
   final IconData selectedIcon;
-  final String label;
 
   const _NavItem({
     required this.icon,
     required this.selectedIcon,
-    required this.label,
   });
 }

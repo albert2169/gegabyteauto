@@ -112,14 +112,16 @@ class _CarCard extends StatelessWidget {
                         ),
                       ],
                     ),
-                    Row(
-                      children: [
-                        _InfoBadge(label: info.year),
-                        const SizedBox(width: 6),
-                        _InfoBadge(label: info.gearBox),
-                        const SizedBox(width: 6),
-                        _InfoBadge(label: info.engine),
-                      ],
+                    Expanded(
+                      child: Row(
+                        children: [
+                          _InfoBadge(label: info.year),
+                          const SizedBox(width: 6),
+                          _InfoBadge(label: info.gearBox),
+                          const SizedBox(width: 6),
+                          Expanded(child: _InfoBadge(label: info.engine)),
+                        ],
+                      ),
                     ),
                     Text(
                       info.price,
@@ -151,6 +153,7 @@ class _InfoBadge extends StatelessWidget {
       ),
       child: Text(
         label,
+        overflow: TextOverflow.ellipsis,
         style: AppTextStyles.labelSmall.copyWith(fontSize: 9),
       ),
     );

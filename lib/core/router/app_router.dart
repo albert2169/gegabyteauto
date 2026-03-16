@@ -6,6 +6,7 @@ import 'package:gegabyteauto/models/car_view_model.dart';
 import 'package:gegabyteauto/presentation/filters/bloc/filters_state.dart';
 // Screens
 import 'package:gegabyteauto/presentation/auth/auth_screen/auth_screen.dart';
+import 'package:gegabyteauto/presentation/messages/main_message_screen.dart';
 import 'package:gegabyteauto/presentation/shell/screens/shell_screen.dart';
 import 'package:gegabyteauto/presentation/home/screens/home_screen.dart';
 import 'package:gegabyteauto/presentation/all_cars/screens/all_cars_screen.dart';
@@ -28,6 +29,7 @@ class AppRouter extends RootStackRouter {
           children: [
             AutoRoute(page: HomeRoute.page, initial: true),
             AutoRoute(page: AllCarsRoute.page),
+            AutoRoute(page: MainMessageRoute.page),
             AutoRoute(page: FavoritesRoute.page),
             AutoRoute(page: ProfileRoute.page),
           ],

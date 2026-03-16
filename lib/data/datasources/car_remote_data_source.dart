@@ -27,31 +27,38 @@ class CarRemoteDataSource implements ICarRemoteDataSource {
   ];
 
   static const _cities = [
-    'Yerevan',
-    'Gyumri',
-    'Vanadzor',
-    'Abovyan',
-    'Etchmiadzin',
-    'Hrazdan',
-    'Kapan',
-    'Gavar',
+    'Երևան',
+    'Գյումրի',
+    'Վանաձոր',
+    'Աբովյան',
+    'Էջմիածին',
+    'Հրազդան',
+    'Կապան',
+    'Գավառ',
   ];
 
-  static const _gearBoxes = ['Automatic', 'Manual', 'CVT'];
-  static const _engines = ['Gasoline', 'Diesel', 'Hybrid', 'Electric'];
-  static const _conditions = ['New', 'Used', 'Certified Pre-Owned'];
+  static const _gearBoxes = ['Ավտոմատ', 'Մեխանիկական', 'CVT'];
+  static const _engines = ['Գազ', 'Դիզել', 'հիբրիդ', 'Էլեկտրական'];
+  static const _conditions = [
+    'Նոր',
+    'Օգտագործած',
+    'Վավերացված օգտագործված ավտոմեքենա'
+  ];
   static const _colors = [
-    'Black',
-    'White',
-    'Silver',
-    'Red',
-    'Blue',
-    'Gray',
-    'Navy',
-    'Beige'
+    'Սև',
+    'Սպիտակ',
+    'Արծաթագույն',
+    'Կարմիր',
+    'Կապույտ',
+    'Մոխրագույն',
+    'Բեժ'
   ];
-  static const _interiors = ['Leather', 'Textile', 'Alcantara', 'Premium'];
-
+  static const _interiors = [
+    'Կաշի',
+    'Տեքստիլ',
+    'Ալկանտարա',
+    'Պրեմիում',
+  ];
   static const _carData = [
     {
       'brand': 'Mercedes-Benz',
@@ -224,7 +231,7 @@ class CarRemoteDataSource implements ICarRemoteDataSource {
           city: _cities[index % _cities.length],
           phoneNumber: '+374 ${77 + (index % 22)} ${100000 + index * 137}',
           releaseDate: '${(index % 28) + 1}.${(index % 12) + 1}.2025',
-          lastUpdate: '${(index % 9) + 1} days ago',
+          lastUpdate: '${(index % 9) + 1} օր առաջ',
         ),
         images: List.generate(3, (i) {
           return CarImageDto(
@@ -236,19 +243,20 @@ class CarRemoteDataSource implements ICarRemoteDataSource {
         }),
         price: _formatPrice(15000 + index * 4500),
         year: '${2015 + (index % 10)}',
-        mileage: '${28000 + index * 3900} km',
+        mileage: '${28000 + index * 3900} կմ',
         brand: data['brand']!,
         model: data['model']!,
         gearBox: _gearBoxes[index % _gearBoxes.length],
         condition: _conditions[index % _conditions.length],
         color: _colors[index % _colors.length],
         engine: _engines[index % _engines.length],
-        engineVolume: index % 2 == 0 ? '3.0L' : '4.0L',
+        engineVolume: index % 2 == 0 ? '3.0լ' : '4.0լ',
         interior: _interiors[index % _interiors.length],
         description:
-            'A premium ${data['brand']} ${data['model']} ${data['seria']}. '
-            'Excellent condition, well maintained. Full service history. '
-            'All options available. Test drive by appointment.',
+            'Պրեմիում ${data['brand']} ${data['model']} ${data['seria']}. '
+            'Գերազանց վիճակ, խնամքով պահպանված։ '
+            'Ամբողջական սպասարկման պատմություն։ '
+            'Բոլոր օպցիաներով։ Թեստ-դրայվը հնարավոր է պայմանավորվածությամբ։',
       );
     });
 

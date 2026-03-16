@@ -31,6 +31,14 @@ abstract final class AppColors {
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
   );
+  static const Gradient secondaryGradient = LinearGradient(
+    colors: [
+      Color(0xFF34C759),
+      Color(0xFF28A745),
+    ],
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+  );
 
   static const Gradient darkBackgroundGradient = LinearGradient(
     colors: [Color(0xFF0A0A0E), Color(0xFF13131A), Color(0xFF0A0A0E)],

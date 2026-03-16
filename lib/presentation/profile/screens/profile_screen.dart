@@ -55,7 +55,7 @@ class ProfileScreen extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Guest User', style: AppTextStyles.headlineSmall),
+            Text('Հյուր', style: AppTextStyles.headlineSmall),
             const SizedBox(height: 4),
             Text(
               'guest@example.com',
@@ -72,13 +72,13 @@ class ProfileScreen extends StatelessWidget {
     final items = [
       _MenuItem(
           icon: Icons.directions_car_outlined,
-          title: 'My Listings',
+          title: 'Իմ հրապարակումները',
           onTap: () {}),
-      _MenuItem(icon: Icons.settings_outlined, title: 'Settings', onTap: () {}),
-      _MenuItem(icon: Icons.help_outline_rounded, title: 'Help', onTap: () {}),
+      _MenuItem(icon: Icons.settings_outlined, title: 'Կարգավորումներ', onTap: () {}),
+      _MenuItem(icon: Icons.help_outline_rounded, title: 'Օգնություն', onTap: () {}),
       _MenuItem(
         icon: Icons.logout_rounded,
-        title: 'Sign Out',
+        title: 'Դուրս գալ',
         isDestructive: true,
         onTap: () {
           context.read<AuthBloc>().add(const AuthSignOutRequested());

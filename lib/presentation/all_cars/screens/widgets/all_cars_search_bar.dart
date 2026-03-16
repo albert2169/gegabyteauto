@@ -71,7 +71,7 @@ class _AllCarsSearchBarState extends State<AllCarsSearchBar> {
                       });
                 },
                 decoration: InputDecoration(
-                  hintText: 'Search brand, model, color...',
+                  hintText: 'Փնտրիր ըստ բրենդի, մոդելի, տարեթվի...',
                   hintStyle: TextStyle(
                     color: Colors.white.withValues(alpha: 0.3),
                     fontSize: 14,

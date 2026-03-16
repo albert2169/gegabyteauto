@@ -34,7 +34,7 @@ class MainScreenSections extends StatelessWidget {
           onTap: () => AutoTabsRouter.of(context).setActiveIndex(1),
         ),
         MainScreenSectionItem(
-          iconData: Icons.sell_rounded,
+          iconData: Icons.sell_sharp,
           title: 'Վաճառել մեքենա',
           subtitle: 'Արագ տեղադրում',
           color: const Color(0xFF2A1A1A),
@@ -42,9 +42,9 @@ class MainScreenSections extends StatelessWidget {
           onTap: () {},
         ),
         MainScreenSectionItem(
-          iconData: Icons.tune_rounded,
-          title: 'համեմատել',
-          subtitle: 'կողք կողքի',
+          iconData: Icons.shop,
+          title: 'Փաթեթներ',
+          subtitle: 'Ընտրեք փաթեթ',
           color: const Color(0xFF1A1A2A),
           accentColor: const Color(0xFF7DC4FF),
           onTap: () {},
