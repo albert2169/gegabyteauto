@@ -68,7 +68,7 @@ class _CarCard extends StatelessWidget {
               borderRadius:
                   const BorderRadius.horizontal(left: Radius.circular(20)),
               child: SizedBox(
-                width: 130,
+                width: 200,
                 height: 130,
                 child: imageUrl != null
                     ? CachedNetworkImage(
@@ -86,7 +86,8 @@ class _CarCard extends StatelessWidget {
             ),
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.all(14),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 14, vertical: 7),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -143,7 +144,7 @@ class _InfoBadge extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 3),
+      padding: const EdgeInsets.symmetric(vertical: 3),
       decoration: BoxDecoration(
         color: AppColors.surfaceVariant,
         borderRadius: BorderRadius.circular(6),

@@ -1,80 +1,43 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gegabyteauto/core/di/injection.dart';
 import 'package:gegabyteauto/core/theme/app_colors.dart';
-import 'package:gegabyteauto/commons/state/filters_bloc/all_cars_filters/all_cars_filters_bloc.dart';
-import 'package:gegabyteauto/commons/state/filters_bloc/all_cars_filters/all_cars_filters_event.dart';
-import 'package:gegabyteauto/commons/state/filters_bloc/all_cars_filters/all_cars_filters_state.dart';
+import 'package:gegabyteauto/models/car_filter_chip.dart';
+import 'package:gegabyteauto/presentation/all_cars/bloc/cars_bloc.dart';
+import 'package:gegabyteauto/presentation/all_cars/bloc/cars_event.dart';
+import 'package:gegabyteauto/presentation/filters/bloc/filters_bloc.dart';
+import 'package:gegabyteauto/presentation/filters/bloc/filters_event.dart';
 
 class AllCarsActiveFilterChips extends StatelessWidget {
-  const AllCarsActiveFilterChips({super.key});
+  final List<CarFilterChip> chips;
+  const AllCarsActiveFilterChips({super.key, required this.chips});
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AllCarsFiltersBloc, AllCarsFiltersState>(
-      buildWhen: (previous, current) =>
-          previous.selectedBrand != current.selectedBrand ||
-          previous.selectedGearBox != current.selectedGearBox ||
-          previous.selectedEngine != current.selectedEngine,
-      builder: (context, state) {
-        final chips = <Widget>[];
-
-        if (state.selectedBrand != null) {
-          chips.add(
-            _ActiveChip(
-              label: state.selectedBrand!,
-              onRemove: () {
-                context.read<AllCarsFiltersBloc>().add(
-                      const AllCarsFilterRemoved(AllCarsRemovableFilter.brand),
-                    );
-              },
-            ),
-          );
-        }
-
-        if (state.selectedGearBox != null) {
-          chips.add(
-            _ActiveChip(
-              label: state.selectedGearBox!,
-              onRemove: () {
-                context.read<AllCarsFiltersBloc>().add(
-                      const AllCarsFilterRemoved(
-                          AllCarsRemovableFilter.gearBox),
-                    );
-              },
-            ),
-          );
-        }
-
-        if (state.selectedEngine != null) {
-          chips.add(
-            _ActiveChip(
-              label: state.selectedEngine!,
-              onRemove: () {
-                context.read<AllCarsFiltersBloc>().add(
-                      const AllCarsFilterRemoved(AllCarsRemovableFilter.engine),
-                    );
-              },
-            ),
-          );
-        }
-
-        if (chips.isEmpty) {
-          return const SizedBox.shrink();
-        }
-
-        return Padding(
-          padding: const EdgeInsets.fromLTRB(16, 4, 16, 0),
-          child: SizedBox(
-            height: 32,
-            child: ListView.separated(
-              scrollDirection: Axis.horizontal,
-              itemCount: chips.length,
-              separatorBuilder: (_, __) => const SizedBox(width: 6),
-              itemBuilder: (_, index) => chips[index],
-            ),
+    if (chips.isEmpty) {
+      return const SizedBox.shrink();
+    }
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(16, 4, 16, 0),
+      child: SizedBox(
+        height: 32,
+        child: ListView.separated(
+          scrollDirection: Axis.horizontal,
+          itemCount: chips.length,
+          separatorBuilder: (_, __) => const SizedBox(width: 6),
+          itemBuilder: (_, index) => _ActiveChip(
+            label: chips[index].chipName,
+            onRemove: () {
+              getIt<FiltersBloc>().add(RemoveASingleChipEvent(
+                filterChipType: chips[index].type,
+                onFinish: (newAppliedFilters) {
+                  getIt<CarsBloc>().add(
+                      FetchAllCarsEvent(appliedFilters: newAppliedFilters));
+                },
+              ));
+            },
           ),
-        );
-      },
+        ),
+      ),
     );
   }
 }

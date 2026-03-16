@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gegabyteauto/core/theme/app_colors.dart';
+import 'package:gegabyteauto/models/car_filter_view_model.dart';
 
 import '../../bloc/filters_bloc.dart';
 import '../../bloc/filters_state.dart';
@@ -20,7 +21,8 @@ class FiltersHeader extends StatelessWidget implements PreferredSizeWidget {
       elevation: 0,
       leading: IconButton(
         onPressed: () {
-          context.router.maybePop(null);
+          context.read<FiltersBloc>().add(CloseWithoutApplyingEvent());
+          context.router.maybePop<CarFilterViewModel?>(null);
         },
         icon: const Icon(Icons.close, color: Colors.white),
       ),

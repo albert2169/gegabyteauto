@@ -8,6 +8,7 @@ import 'package:gegabyteauto/models/car_filter_view_model.dart';
 import 'package:gegabyteauto/presentation/all_cars/bloc/cars_bloc.dart';
 import 'package:gegabyteauto/presentation/all_cars/bloc/cars_event.dart';
 import 'package:gegabyteauto/presentation/all_cars/bloc/cars_state.dart';
+import 'package:gegabyteauto/presentation/all_cars/screens/widgets/all_cars_active_filter_chips.dart';
 import 'package:gegabyteauto/presentation/all_cars/screens/widgets/all_cars_app_bar.dart';
 import 'package:gegabyteauto/presentation/all_cars/screens/widgets/all_cars_empty_state.dart';
 import 'package:gegabyteauto/presentation/all_cars/screens/widgets/all_cars_error_view.dart';
@@ -17,6 +18,7 @@ import 'package:gegabyteauto/presentation/all_cars/screens/widgets/all_cars_sear
 import 'package:gegabyteauto/presentation/all_cars/widgets/car_grid_view.dart';
 import 'package:gegabyteauto/presentation/all_cars/widgets/car_reels_view.dart';
 import 'package:gegabyteauto/presentation/filters/bloc/filters_bloc.dart';
+import 'package:gegabyteauto/presentation/filters/bloc/filters_event.dart';
 import 'package:gegabyteauto/presentation/filters/bloc/filters_state.dart'
     hide LoadState;
 
@@ -60,12 +62,14 @@ class _AllCarsScreenContent extends StatefulWidget {
 
 class _AllCarsScreenContentState extends State<_AllCarsScreenContent> {
   late final TextEditingController _searchTextEditingController;
+  late final FocusNode _searchFocusNode;
   late final CarsBloc _carsBloc;
 
   @override
   void initState() {
     super.initState();
     _searchTextEditingController = TextEditingController();
+    _searchFocusNode = FocusNode();
     _carsBloc = getIt<CarsBloc>()
       ..add(FetchAllCarsEvent(
         searchText: '',
@@ -87,57 +91,65 @@ class _AllCarsScreenContentState extends State<_AllCarsScreenContent> {
       appBar: const AllCarsAppBar(),
       body: SafeArea(
         top: false,
-        child: BlocBuilder<CarsBloc, CarsState>(
-          builder: (context, state) {
-            switch (state.loadState) {
-              case LoadState.initial:
-              case LoadState.loading:
-                return const AllCarsLoadingView();
-              case LoadState.error:
-                return AllCarsErrorView(
-                    searchText: _searchTextEditingController.text,
-                    appliedFilters:
-                        widget.filtersBloc.state.carFilterViewModel,
-                    message: state.errorMessage ?? 'An error occurred');
-              case LoadState.loaded:
-                return BlocBuilder<CarsBloc, CarsState>(
-                  builder: (context, state) {
-                    return Column(
-                      children: [
-                        AllCarsSearchBar(
-                          searchEditingController: _searchTextEditingController,
-                          onFiltersTap: () => _onFiltersTap(context),
-                        ),
-                        //    const AllCarsCountBar(),
-                        Expanded(
-                          child: AnimatedSwitcher(
-                            duration: const Duration(milliseconds: 300),
-                            child: state.allCars.isEmpty
-                                ? const AllCarsEmptyState()
-                                : Builder(
-                                    builder: (context) {
-                                      switch (state.viewMode) {
-                                        case CarsViewMode.list:
-                                          return AllCarsListView(
-                                              cars: state.allCars);
-                                        case CarsViewMode.grid:
-                                          return CarGridView(
-                                              key: const ValueKey('grid'),
-                                              cars: state.allCars);
-                                        case CarsViewMode.reels:
-                                          return CarReelsView(
-                                              key: const ValueKey('reels'),
-                                              cars: state.allCars);
-                                      }
-                                    },
-                                  ),
-                          ),
-                        ),
-                      ],
+        child: BlocBuilder<FiltersBloc, FiltersState>(
+          builder: (context, filtersState) {
+            return BlocBuilder<CarsBloc, CarsState>(
+              builder: (context, state) {
+                switch (state.loadState) {
+                  case LoadState.initial:
+                  case LoadState.loading:
+                    return const AllCarsLoadingView();
+                  case LoadState.error:
+                    return AllCarsErrorView(
+                        searchText: _searchTextEditingController.text,
+                        appliedFilters: filtersState.carFilterViewModel,
+                        message: state.errorMessage ?? 'An error occurred');
+                  case LoadState.loaded:
+                    return BlocBuilder<CarsBloc, CarsState>(
+                      builder: (context, state) {
+                        return Column(
+                          children: [
+                            AllCarsSearchBar(
+                              searchFocusNode: _searchFocusNode,
+                              searchEditingController:
+                                  _searchTextEditingController,
+                              onFiltersTap: () => _onFiltersTap(context),
+                            ),
+                            AllCarsActiveFilterChips(
+                              chips: filtersState.chips,
+                            ),
+                            //    const AllCarsCountBar(),
+                            Expanded(
+                              child: AnimatedSwitcher(
+                                duration: const Duration(milliseconds: 300),
+                                child: state.allCars.isEmpty
+                                    ? const AllCarsEmptyState()
+                                    : Builder(
+                                        builder: (context) {
+                                          switch (state.viewMode) {
+                                            case CarsViewMode.list:
+                                              return AllCarsListView(
+                                                  cars: state.allCars);
+                                            case CarsViewMode.grid:
+                                              return CarGridView(
+                                                  key: const ValueKey('grid'),
+                                                  cars: state.allCars);
+                                            case CarsViewMode.reels:
+                                              return CarReelsView(
+                                                  key: const ValueKey('reels'),
+                                                  cars: state.allCars);
+                                          }
+                                        },
+                                      ),
+                              ),
+                            ),
+                          ],
+                        );
+                      },
                     );
-                  },
-                );
-            }
+                }
+              },
+            );
           },
         ),
       ),
@@ -145,10 +157,14 @@ class _AllCarsScreenContentState extends State<_AllCarsScreenContent> {
   }
 
   Future<void> _onFiltersTap(BuildContext context) async {
+    final appliedFiltersBeforeChange =
+        widget.filtersBloc.state.carFilterViewModel;
+    widget.filtersBloc.add(FilterScreenActiveEvent());
     final carFilterViewModel = await context.router.push<CarFilterViewModel?>(
       FiltersRoute(),
     );
-    if (carFilterViewModel != null) {
+    if (carFilterViewModel != null &&
+        carFilterViewModel != appliedFiltersBeforeChange) {
       _carsBloc.add(FetchAllCarsEvent(
         appliedFilters: carFilterViewModel,
         searchText: _searchTextEditingController.text,

@@ -1,7 +1,8 @@
+import 'package:equatable/equatable.dart';
 import 'package:gegabyteauto/models/car_image_view_model.dart';
 import 'package:gegabyteauto/models/car_owner_info_view_model.dart';
 
-class SingleCarInfoViewModel {
+class SingleCarInfoViewModel extends Equatable {
   final CarOwnerInfoViewModel carOwnerInfoViewModel;
   final List<CarImageViewModel> images;
   final String price;
@@ -33,4 +34,22 @@ class SingleCarInfoViewModel {
     required this.interior,
     required this.description,
   });
+
+  @override
+  List<Object?> get props => [
+        carOwnerInfoViewModel,
+        images,
+        price,
+        year,
+        mileage,
+        brand,
+        model,
+        gearBox,
+        condition,
+        engine,
+        color,
+        engineVolume,
+        interior,
+        description,
+      ];
 }

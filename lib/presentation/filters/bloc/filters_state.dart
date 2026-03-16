@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import 'package:gegabyteauto/models/car_filter_chip.dart';
 import 'package:gegabyteauto/models/car_filter_view_model.dart';
 import 'package:gegabyteauto/presentation/all_cars/bloc/cars_state.dart';
 
@@ -12,10 +13,9 @@ const _gearBoxes = ['Automatic', 'Manual', 'CVT'];
 const _engines = ['Gasoline', 'Diesel', 'Hybrid', 'Electric'];
 
 class FiltersState extends Equatable {
-  final CarFilterViewModel carFilterViewModel;
   static const RangeValues defaultPriceRange = RangeValues(0, 250000);
   static const RangeValues defaultYearRange = RangeValues(2015, 2025);
-
+  final CarFilterViewModel carFilterViewModel;
   final LoadState loadState;
   final String? selectedBrand;
   final String? selectedModel;
@@ -96,6 +96,35 @@ class FiltersState extends Equatable {
     return count;
   }
 
+  List<CarFilterChip> get chips {
+    final selectedChips = <CarFilterChip>[];
+    if (selectedBrand != null) {
+      selectedChips.add(
+          CarFilterChip(chipName: selectedBrand!, type: FilterChipType.brand));
+    }
+    if (selectedModel != null) {
+      selectedChips.add(
+        CarFilterChip(chipName: selectedModel!, type: FilterChipType.model),
+      );
+    }
+    if (selectedSeries != null) {
+      selectedChips.add(
+        CarFilterChip(chipName: selectedSeries!, type: FilterChipType.seria),
+      );
+    }
+    if (selectedGearBox != null) {
+      selectedChips.add(
+        CarFilterChip(chipName: selectedGearBox!, type: FilterChipType.gearbox),
+      );
+    }
+    if (selectedEngine != null) {
+      selectedChips.add(
+        CarFilterChip(chipName: selectedEngine!, type: FilterChipType.engine),
+      );
+    }
+    return selectedChips;
+  }
+
   FiltersState copyWith({
     LoadState? loadState,
     String? selectedBrand,
@@ -113,16 +142,27 @@ class FiltersState extends Equatable {
     List<String>? allBrands,
     List<String>? allModels,
     List<String>? allSeries,
+    bool isRemovingASingleChip = false,
     CarFilterViewModel? carFilterViewModel,
   }) {
     return FiltersState(
       carFilterViewModel: carFilterViewModel ?? this.carFilterViewModel,
       loadState: loadState ?? this.loadState,
-      selectedBrand: (selectedBrand ?? this.selectedBrand),
-      selectedModel: (selectedModel ?? this.selectedModel),
-      selectedSeries: (selectedSeries ?? this.selectedSeries),
-      selectedGearBox: (selectedGearBox ?? this.selectedGearBox),
-      selectedEngine: (selectedEngine ?? this.selectedEngine),
+      selectedBrand: isRemovingASingleChip && selectedBrand == null
+          ? null
+          : selectedBrand ?? this.selectedBrand,
+      selectedModel: isRemovingASingleChip && selectedModel == null
+          ? null
+          : selectedModel ?? this.selectedModel,
+      selectedSeries: isRemovingASingleChip && selectedSeries == null
+          ? null
+          : selectedSeries ?? this.selectedSeries,
+      selectedGearBox: isRemovingASingleChip && selectedGearBox == null
+          ? null
+          : selectedGearBox ?? this.selectedGearBox,
+      selectedEngine: isRemovingASingleChip && selectedEngine == null
+          ? null
+          : selectedEngine ?? this.selectedEngine,
       priceRange: priceRange ?? this.priceRange,
       yearRange: yearRange ?? this.yearRange,
       availableBrands: availableBrands ?? this.availableBrands,

@@ -39,12 +39,11 @@ class CarGridView extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Car image
                 ClipRRect(
                   borderRadius:
                       const BorderRadius.vertical(top: Radius.circular(16)),
                   child: SizedBox(
-                    height: 130,
+                    height: 160,
                     width: double.infinity,
                     child: imageUrl != null && imageUrl.isNotEmpty
                         ? CachedNetworkImage(
@@ -60,8 +59,6 @@ class CarGridView extends StatelessWidget {
                         : _imageFallback(),
                   ),
                 ),
-
-                // Info
                 Expanded(
                   child: Padding(
                     padding: const EdgeInsets.all(10),
@@ -129,7 +126,7 @@ class CarGridView extends StatelessWidget {
 
   Widget _badge(String label) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+      padding: const EdgeInsets.symmetric(vertical: 2),
       decoration: BoxDecoration(
         color: AppColors.surfaceVariant,
         borderRadius: BorderRadius.circular(5),
@@ -137,7 +134,7 @@ class CarGridView extends StatelessWidget {
       child: Text(
         label,
         style: const TextStyle(
-          color: Colors.white54,
+          color: Color.fromARGB(137, 255, 246, 246),
           fontSize: 9,
           fontWeight: FontWeight.w500,
         ),

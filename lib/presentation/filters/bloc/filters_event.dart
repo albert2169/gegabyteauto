@@ -1,5 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import 'package:gegabyteauto/models/car_filter_chip.dart';
+import 'package:gegabyteauto/models/car_filter_view_model.dart';
 
 abstract class FiltersEvent extends Equatable {
   const FiltersEvent();
@@ -12,8 +14,25 @@ class InitFiltersEvent extends FiltersEvent {
   const InitFiltersEvent();
 }
 
+class RemoveASingleChipEvent extends FiltersEvent {
+  final FilterChipType filterChipType;
+  final Function(CarFilterViewModel) onFinish;
+  const RemoveASingleChipEvent({
+    required this.filterChipType,
+    required this.onFinish,
+  });
+}
+
+class ApplyFiltersEvent extends FiltersEvent {
+  const ApplyFiltersEvent();
+}
+
 class FilterScreenActiveEvent extends FiltersEvent {
   const FilterScreenActiveEvent();
+}
+
+class CloseWithoutApplyingEvent extends FiltersEvent {
+  const CloseWithoutApplyingEvent();
 }
 
 class FiltersBrandChanged extends FiltersEvent {

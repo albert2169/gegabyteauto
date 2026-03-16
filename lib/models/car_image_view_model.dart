@@ -1,4 +1,6 @@
-class CarImageViewModel {
+import 'package:equatable/equatable.dart';
+
+class CarImageViewModel extends Equatable {
   final bool isInterier;
   final String assetImagePath;
   final String? networkImageUrl;
@@ -8,4 +10,11 @@ class CarImageViewModel {
     required this.assetImagePath,
     this.networkImageUrl,
   });
+
+  @override
+  List<Object?> get props => [
+        isInterier,
+        assetImagePath,
+        networkImageUrl,
+      ];
 }

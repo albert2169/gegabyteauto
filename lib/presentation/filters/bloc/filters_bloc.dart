@@ -4,6 +4,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gegabyteauto/app_constants/app_constants.dart';
 import 'package:gegabyteauto/models/car_brand_view_model.dart';
+import 'package:gegabyteauto/models/car_filter_chip.dart';
+import 'package:gegabyteauto/models/car_filter_view_model.dart';
 
 import 'filters_event.dart';
 import 'filters_state.dart';
@@ -12,6 +14,9 @@ class FiltersBloc extends Bloc<FiltersEvent, FiltersState> {
   late FiltersState _initialFilterState;
 
   FiltersBloc() : super(const FiltersState.initial()) {
+    on<RemoveASingleChipEvent>(_onRemoveASingleChipEvent);
+    on<ApplyFiltersEvent>(_onApplyFiltersEvent);
+    on<CloseWithoutApplyingEvent>(_onCloseWithoutApplyingEvent);
     on<FilterScreenActiveEvent>(_onFilterScreenActiveEvent);
     on<InitFiltersEvent>(_onInitFiltersEvent);
     on<FiltersBrandChanged>(_onBrandChanged);
@@ -23,6 +28,57 @@ class FiltersBloc extends Bloc<FiltersEvent, FiltersState> {
     on<FiltersYearRangeChanged>(_onYearRangeChanged);
     on<FiltersApplyRequested>(_onApplyRequested);
     on<FiltersResetRequested>(_onResetRequested);
+  }
+
+  Future<void> _onRemoveASingleChipEvent(
+    RemoveASingleChipEvent event,
+    Emitter<FiltersState> emit,
+  ) async {
+    final bool isSelectedBrand = event.filterChipType == FilterChipType.brand;
+    final bool isSelectedModel = event.filterChipType == FilterChipType.model;
+    final bool isSelectedSeria = event.filterChipType == FilterChipType.seria;
+    final bool isSelectedgearbox =
+        event.filterChipType == FilterChipType.gearbox;
+    final bool isSelectedEngine = event.filterChipType == FilterChipType.engine;
+    final carFilterViewModel = state.carFilterViewModel.copyWith(
+      isRemovingOne: true,
+      selectedBrand:
+          isSelectedBrand ? null : state.carFilterViewModel.selectedBrand,
+      selectedModel:
+          isSelectedModel ? null : state.carFilterViewModel.selectedModel,
+      selectedSeria:
+          isSelectedSeria ? null : state.carFilterViewModel.selectedSeria,
+      selectedEngine:
+          isSelectedEngine ? null : state.carFilterViewModel.selectedEngine,
+      selectedGearBox:
+          isSelectedgearbox ? null : state.carFilterViewModel.selectedGearBox,
+    );
+    event.onFinish(carFilterViewModel);
+    emit(
+      state.copyWith(
+        isRemovingASingleChip: true,
+        selectedBrand: isSelectedBrand ? null : state.selectedBrand,
+        selectedModel: isSelectedModel ? null : state.selectedModel,
+        selectedSeries: isSelectedSeria ? null : state.selectedSeries,
+        selectedEngine: isSelectedEngine ? null : state.selectedEngine,
+        selectedGearBox: isSelectedgearbox ? null : state.selectedGearBox,
+        carFilterViewModel: carFilterViewModel,
+      ),
+    );
+  }
+
+  Future<void> _onApplyFiltersEvent(
+    ApplyFiltersEvent event,
+    Emitter<FiltersState> emit,
+  ) async {
+    _initialFilterState = state;
+  }
+
+  Future<void> _onCloseWithoutApplyingEvent(
+    CloseWithoutApplyingEvent event,
+    Emitter<FiltersState> emit,
+  ) async {
+    emit(_initialFilterState);
   }
 
   Future<void> _onFilterScreenActiveEvent(
@@ -50,7 +106,7 @@ class FiltersBloc extends Bloc<FiltersEvent, FiltersState> {
     final selectedBrandModel = AppConstants.brands.where((brand) {
       return brand.name == event.brand;
     }).first;
-
+    if (event.brand != null) {}
     emit(
       state.copyWith(
         selectedBrand: event.brand,

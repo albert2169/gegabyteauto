@@ -13,12 +13,15 @@ class CarReelsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return PageView.builder(
-      scrollDirection: Axis.vertical,
-      itemCount: cars.length,
-      itemBuilder: (context, index) {
-        return _ReelPage(car: cars[index]);
-      },
+    return Padding(
+      padding: const EdgeInsets.only(top: 12),
+      child: PageView.builder(
+        scrollDirection: Axis.vertical,
+        itemCount: cars.length,
+        itemBuilder: (context, index) {
+          return _ReelPage(car: cars[index]);
+        },
+      ),
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_debouncer/flutter_debouncer.dart';
 import 'package:gegabyteauto/core/theme/app_colors.dart';
 import 'package:gegabyteauto/core/theme/app_text_styles.dart';
 import 'package:gegabyteauto/presentation/all_cars/bloc/cars_bloc.dart';
@@ -9,23 +10,32 @@ import 'package:gegabyteauto/presentation/filters/bloc/filters_state.dart';
 
 class AllCarsSearchBar extends StatefulWidget {
   final TextEditingController searchEditingController;
+  final FocusNode searchFocusNode;
   final VoidCallback? onFiltersTap;
 
-  const AllCarsSearchBar(
-      {super.key, this.onFiltersTap, required this.searchEditingController});
+  const AllCarsSearchBar({
+    super.key,
+    this.onFiltersTap,
+    required this.searchEditingController,
+    required this.searchFocusNode,
+  });
 
   @override
   State<AllCarsSearchBar> createState() => _AllCarsSearchBarState();
 }
 
 class _AllCarsSearchBarState extends State<AllCarsSearchBar> {
+  late final Debouncer _debouncer;
+
   @override
   void initState() {
     super.initState();
+    _debouncer = Debouncer();
   }
 
   @override
   void dispose() {
+    _debouncer.cancel();
     super.dispose();
   }
 
@@ -43,14 +53,22 @@ class _AllCarsSearchBarState extends State<AllCarsSearchBar> {
                 borderRadius: BorderRadius.circular(12),
               ),
               child: TextField(
+                focusNode: widget.searchFocusNode,
                 controller: widget.searchEditingController,
+                onTapOutside: (_) {
+                  widget.searchFocusNode.unfocus();
+                },
                 style: AppTextStyles.bodyMedium,
                 onChanged: (value) {
-                  context.read<CarsBloc>().add(
-                        FetchAllCarsEvent(
-                          searchText: value,
-                        ),
-                      );
+                  _debouncer.debounce(
+                      duration: const Duration(milliseconds: 800),
+                      onDebounce: () {
+                        context.read<CarsBloc>().add(
+                              FetchAllCarsEvent(
+                                searchText: value,
+                              ),
+                            );
+                      });
                 },
                 decoration: InputDecoration(
                   hintText: 'Search brand, model, color...',
