@@ -21,6 +21,8 @@ class CarDto {
   final String engineVolume;
   final String interior;
   final String description;
+  final bool doILike;
+  final bool doISave;
 
   const CarDto({
     required this.id,
@@ -40,6 +42,8 @@ class CarDto {
     required this.engineVolume,
     required this.interior,
     required this.description,
+    required this.doILike,
+    required this.doISave,
   });
 
   factory CarDto.fromJson(Map<String, dynamic> json) {
@@ -64,6 +68,8 @@ class CarDto {
       engineVolume: json['engine_volume'] as String? ?? '',
       interior: json['interior'] as String? ?? '',
       description: json['description'] as String? ?? '',
+      doILike: false,
+      doISave: false,
     );
   }
 
@@ -85,12 +91,16 @@ class CarDto {
         'engine_volume': engineVolume,
         'interior': interior,
         'description': description,
+        'do_I_like': doILike,
+        'do_I_save': doISave,
       };
 
   CarViewModel toViewModel() => CarViewModel(
         brandLogoImageAsset: brandLogoImageAsset,
         seria: seria,
         singleCarInfoViewModel: SingleCarInfoViewModel(
+          doILike: doILike,
+          doISave: doISave,
           carOwnerInfoViewModel: owner.toViewModel(),
           images: images.map((e) => e.toViewModel()).toList(),
           price: price,

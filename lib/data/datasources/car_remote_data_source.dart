@@ -214,6 +214,8 @@ class CarRemoteDataSource implements ICarRemoteDataSource {
       final data = _carData[index % _carData.length];
 
       return CarDto(
+        doILike: false,
+        doISave: false,
         id: 'car_$index',
         brandLogoImageAsset: data['logo']!,
         seria: data['seria']!,

@@ -11,7 +11,6 @@ class CarsBloc extends Bloc<CarsEvent, CarsState> {
   CarsBloc(this._carRepository) : super(const CarsState.initial()) {
     on<FetchAllCarsEvent>(_onFetchAllCarsEvent);
     on<CarsViewModeChanged>(_onViewModeChanged);
-    on<CarsFiltersClear>(_onFiltersClear);
   }
 
   Future<void> _onFetchAllCarsEvent(
@@ -40,8 +39,5 @@ class CarsBloc extends Bloc<CarsEvent, CarsState> {
     emit(state.copyWith(viewMode: event.viewMode));
   }
 
-  void _onFiltersClear(
-    CarsFiltersClear event,
-    Emitter<CarsState> emit,
-  ) {}
+
 }

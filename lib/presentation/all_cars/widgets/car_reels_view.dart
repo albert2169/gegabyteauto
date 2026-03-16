@@ -40,9 +40,9 @@ class _ReelPage extends StatelessWidget {
     return GestureDetector(
       onTap: () => context.pushRoute(SingleCarRoute(car: car)),
       child: Stack(
+        alignment: AlignmentGeometry.center,
         fit: StackFit.expand,
         children: [
-          // Background image
           imageUrl != null && imageUrl.isNotEmpty
               ? CachedNetworkImage(
                   imageUrl: imageUrl,
@@ -55,8 +55,6 @@ class _ReelPage extends StatelessWidget {
                   errorWidget: (_, __, ___) => _imageFallback(),
                 )
               : _imageFallback(),
-
-          // Dark gradient overlay (bottom)
           const DecoratedBox(
             decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -72,8 +70,6 @@ class _ReelPage extends StatelessWidget {
               ),
             ),
           ),
-
-          // Bottom content
           Positioned(
             left: 16,
             right: 70,
@@ -120,32 +116,35 @@ class _ReelPage extends StatelessWidget {
               ],
             ),
           ),
-
-          // Right sidebar actions
           Positioned(
-            right: 12,
-            bottom: 60,
-            child: Column(
-              children: [
-                _SidebarButton(
-                  icon: Icons.favorite_border_rounded,
-                  label: 'Save',
-                ),
-                const SizedBox(height: 20),
-                _SidebarButton(
-                  icon: Icons.share_rounded,
-                  label: 'Share',
-                ),
-                const SizedBox(height: 20),
-                _SidebarButton(
-                  icon: Icons.bookmark_border_rounded,
-                  label: 'Bookmark',
-                ),
-              ],
+            right: 16,
+            top: 0,
+            bottom: 0,
+            child: Center(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  _SidebarButton(
+                    onTap: () {},
+                    icon: Icons.favorite_border_rounded,
+                    label: 'Like',
+                  ),
+                  const SizedBox(height: 20),
+                  _SidebarButton(
+                    onTap: () {},
+                    icon: Icons.reply,
+                    label: 'Share',
+                  ),
+                  const SizedBox(height: 20),
+                  _SidebarButton(
+                    onTap: () {},
+                    icon: Icons.bookmark_border_rounded,
+                    label: 'Save',
+                  ),
+                ],
+              ),
             ),
           ),
-
-          // Swipe hint
           const Positioned(
             bottom: 8,
             left: 0,
@@ -193,25 +192,22 @@ class _ReelPage extends StatelessWidget {
 class _SidebarButton extends StatelessWidget {
   final IconData icon;
   final String label;
+  final Function onTap;
 
-  const _SidebarButton({required this.icon, required this.label});
+  const _SidebarButton(
+      {required this.icon, required this.label, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Container(
-          padding: const EdgeInsets.all(10),
-          decoration: BoxDecoration(
-            color: Colors.white.withValues(alpha: 0.15),
-            shape: BoxShape.circle,
-          ),
-          child: Icon(icon, color: Colors.white, size: 24),
-        ),
+        Icon(icon, color: Colors.white, size: 32),
         const SizedBox(height: 4),
         Text(
           label,
-          style: const TextStyle(color: Colors.white70, fontSize: 11),
+          style: const TextStyle(
+              color: Colors.white, fontSize: 11, fontWeight: FontWeight.w600),
         ),
       ],
     );

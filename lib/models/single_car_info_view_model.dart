@@ -17,6 +17,8 @@ class SingleCarInfoViewModel extends Equatable {
   final String engineVolume;
   final String interior;
   final String description;
+  final bool doILike;
+  final bool doISave;
 
   const SingleCarInfoViewModel({
     required this.carOwnerInfoViewModel,
@@ -33,6 +35,8 @@ class SingleCarInfoViewModel extends Equatable {
     required this.engineVolume,
     required this.interior,
     required this.description,
+    required this.doILike,
+    required this.doISave,
   });
 
   @override
@@ -51,5 +55,7 @@ class SingleCarInfoViewModel extends Equatable {
         engineVolume,
         interior,
         description,
+        doILike,
+        doISave,
       ];
 }

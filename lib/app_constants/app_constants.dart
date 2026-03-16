@@ -173,6 +173,8 @@ class AppConstants {
       brandLogoImageAsset: brand.logoAssetPath,
       seria: seria,
       singleCarInfoViewModel: SingleCarInfoViewModel(
+        doILike: false,
+        doISave: false,
         carOwnerInfoViewModel: CarOwnerInfoViewModel(
           name: _ownerNames[index % _ownerNames.length],
           city: _cities[index % _cities.length],
