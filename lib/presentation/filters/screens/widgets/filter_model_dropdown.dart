@@ -20,11 +20,11 @@ class FilterModelDropdown extends StatelessWidget {
         final isEnabled = state.selectedBrand != null;
 
         return _FilterDropdownBase(
-          label: 'Model',
+          label: 'Մոդել',
           value: state.selectedModel,
           items: state.availableModels,
           enabled: isEnabled,
-          hint: isEnabled ? 'Select Model' : 'Select Brand first',
+          hint: isEnabled ? 'Ընտրեք մոդելը' : 'Սկզբում ընտրեք մակնիշը',
           onChanged: isEnabled
               ? (value) {
                   context.read<FiltersBloc>().add(FiltersModelChanged(value));
@@ -104,7 +104,7 @@ class _FilterDropdownBase extends StatelessWidget {
                         DropdownMenuItem<String?>(
                           value: null,
                           child: Text(
-                            'All',
+                            'Բոլորը',
                             style: TextStyle(
                                 color: Colors.white.withValues(alpha: 0.6)),
                           ),

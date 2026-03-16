@@ -17,7 +17,7 @@ class FilterEngineDropdown extends StatelessWidget {
           previous.availableEngines != current.availableEngines,
       builder: (context, state) {
         return _FilterDropdownBase(
-          label: 'Engine',
+          label: 'Շարժիչ',
           value: state.selectedEngine,
           items: state.availableEngines,
           onChanged: (value) {
@@ -90,7 +90,7 @@ class _FilterDropdownBase extends StatelessWidget {
                 DropdownMenuItem<String?>(
                   value: null,
                   child: Text(
-                    'All',
+                    'Բոլորը',
                     style:
                         TextStyle(color: Colors.white.withValues(alpha: 0.6)),
                   ),

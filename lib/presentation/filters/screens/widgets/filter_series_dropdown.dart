@@ -20,11 +20,11 @@ class FilterSeriesDropdown extends StatelessWidget {
         final isEnabled = state.selectedModel != null;
 
         return _FilterDropdownBase(
-          label: 'Series',
+          label: 'Սերիա',
           value: state.selectedSeries,
           items: state.availableSeries,
           enabled: isEnabled,
-          hint: isEnabled ? 'Select Series' : 'Select Model first',
+          hint: isEnabled ? 'Ընտրեք Սերան' : 'Սկզբում ընտրեք մոդելը',
           onChanged: isEnabled
               ? (value) {
                   context.read<FiltersBloc>().add(FiltersSeriesChanged(value));
@@ -104,7 +104,7 @@ class _FilterDropdownBase extends StatelessWidget {
                         DropdownMenuItem<String?>(
                           value: null,
                           child: Text(
-                            'All',
+                            'Բոլորը',
                             style: TextStyle(
                                 color: Colors.white.withValues(alpha: 0.6)),
                           ),

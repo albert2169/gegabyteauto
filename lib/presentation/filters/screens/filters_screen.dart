@@ -85,7 +85,7 @@ class _FiltersBody extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _buildSectionTitle('Vehicle'),
+          _buildSectionTitle('Մեքենայի տեսակը'),
           const SizedBox(height: 16),
           const FilterBrandDropdown(),
           const SizedBox(height: 16),
@@ -93,7 +93,7 @@ class _FiltersBody extends StatelessWidget {
           const SizedBox(height: 16),
           const FilterSeriesDropdown(),
           const SizedBox(height: 32),
-          _buildSectionTitle('Specifications'),
+          _buildSectionTitle('Տրանսպորտային միջոցի տվյալներ'),
           const SizedBox(height: 16),
           Row(
             children: [
@@ -103,7 +103,7 @@ class _FiltersBody extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 32),
-          _buildSectionTitle('Price & Year'),
+          _buildSectionTitle('Գին և Տարեթիվ'),
           const SizedBox(height: 16),
           Container(
             padding: const EdgeInsets.all(16),

@@ -23,7 +23,7 @@ class FilterYearSlider extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Year Range',
+                  'Տարեթվերի միջակայք',
                   style: TextStyle(
                     color: isModified ? AppColors.primary : Colors.white70,
                     fontSize: 14,

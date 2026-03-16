@@ -17,7 +17,7 @@ class FilterGearboxDropdown extends StatelessWidget {
           previous.availableGearBoxes != current.availableGearBoxes,
       builder: (context, state) {
         return _FilterDropdownBase(
-          label: 'Gearbox',
+          label: 'Փոխանցման տուփ',
           value: state.selectedGearBox,
           items: state.availableGearBoxes,
           onChanged: (value) {
@@ -72,7 +72,7 @@ class _FilterDropdownBase extends StatelessWidget {
             child: DropdownButton<String?>(
               value: value,
               hint: Text(
-                'Select $label',
+                'Ընտրեք $label',
                 style: TextStyle(
                   color: Colors.white.withValues(alpha: 0.4),
                   fontSize: 14,
@@ -90,7 +90,7 @@ class _FilterDropdownBase extends StatelessWidget {
                 DropdownMenuItem<String?>(
                   value: null,
                   child: Text(
-                    'All',
+                    'Բոլորը',
                     style:
                         TextStyle(color: Colors.white.withValues(alpha: 0.6)),
                   ),

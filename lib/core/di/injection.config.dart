@@ -19,6 +19,7 @@ import '../../domain/repositories/i_auth_repository.dart' as _i841;
 import '../../domain/repositories/i_car_repository.dart' as _i689;
 import '../../presentation/all_cars/bloc/cars_bloc.dart' as _i200;
 import '../../presentation/auth/bloc/auth_bloc.dart' as _i476;
+import '../../presentation/filters/bloc/filters_bloc.dart' as _i403;
 
 extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -31,6 +32,7 @@ extension GetItInjectableX on _i174.GetIt {
       environment,
       environmentFilter,
     );
+    gh.lazySingleton<_i403.FiltersBloc>(() => _i403.FiltersBloc());
     gh.lazySingleton<_i844.ICarRemoteDataSource>(
         () => _i844.CarRemoteDataSource());
     gh.lazySingleton<_i841.IAuthRepository>(() => _i895.AuthRepository());
@@ -38,7 +40,7 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i1046.CarRepository(gh<_i844.ICarRemoteDataSource>()));
     gh.factory<_i476.AuthBloc>(
         () => _i476.AuthBloc(gh<_i841.IAuthRepository>()));
-    gh.factory<_i200.CarsBloc>(
+    gh.lazySingleton<_i200.CarsBloc>(
         () => _i200.CarsBloc(gh<_i689.ICarRepository>()));
     return this;
   }

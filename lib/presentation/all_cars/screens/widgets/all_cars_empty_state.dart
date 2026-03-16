@@ -24,7 +24,7 @@ class AllCarsEmptyState extends StatelessWidget {
             size: 64,
           ),
           const SizedBox(height: 16),
-          Text('No cars found', style: AppTextStyles.headlineMedium),
+          Text('Մեքենա չի գտնվել', style: AppTextStyles.headlineMedium),
           const SizedBox(height: 8),
           GestureDetector(
             onTap: () {
@@ -34,7 +34,7 @@ class AllCarsEmptyState extends StatelessWidget {
                   .add(FetchAllCarsEvent(appliedFilters: CarFilterViewModel()));
             },
             child: Text(
-              'Reset filters',
+              'Մաքրել ֆիլտրերը',
               style: AppTextStyles.bodyMedium.copyWith(
                 color: AppColors.primary,
                 fontWeight: FontWeight.w600,

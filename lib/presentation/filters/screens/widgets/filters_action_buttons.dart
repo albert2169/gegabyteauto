@@ -61,7 +61,7 @@ class _FiltersActionButtonsState extends State<FiltersActionButtons> {
                     fontSize: 15,
                     fontWeight: FontWeight.w500,
                   ),
-                  text: 'Cancel',
+                  text: 'Չեղարկել',
                 ),
               ),
               const SizedBox(width: 12),
@@ -73,10 +73,11 @@ class _FiltersActionButtonsState extends State<FiltersActionButtons> {
                     fontSize: 15,
                     fontWeight: FontWeight.w600,
                   ),
-                  text: 'Apply Filters',
+                  text: 'Կիրառել',
                   onTap: () {
                     _filtersBloc.add(ApplyFiltersEvent());
-                    context.router.maybePop<CarFilterViewModel?>(state.carFilterViewModel);
+                    context.router.maybePop<CarFilterViewModel?>(
+                        state.carFilterViewModel);
                   },
                   color: AppColors.primary,
                 ),

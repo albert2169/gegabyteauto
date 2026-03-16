@@ -9,8 +9,8 @@ export 'package:gegabyteauto/presentation/all_cars/bloc/cars_state.dart'
 
 enum RemovableFilter { brand, model, series, gearBox, engine }
 
-const _gearBoxes = ['Automatic', 'Manual', 'CVT'];
-const _engines = ['Gasoline', 'Diesel', 'Hybrid', 'Electric'];
+const _gearBoxes = ['Ավտոմատ', 'Մեխանիկական', 'CVT'];
+const _engines = ['Գազ', 'Դիզել', 'Հիբրիդ', 'Էլեկտրական'];
 
 class FiltersState extends Equatable {
   static const RangeValues defaultPriceRange = RangeValues(0, 250000);

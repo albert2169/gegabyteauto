@@ -24,7 +24,7 @@ class FilterPriceSlider extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Price Range',
+                  'Գների միջակայք',
                   style: TextStyle(
                     color: isModified ? AppColors.primary : Colors.white70,
                     fontSize: 14,

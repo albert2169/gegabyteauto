@@ -4,7 +4,7 @@ import 'package:gegabyteauto/domain/repositories/i_car_repository.dart';
 import 'cars_event.dart';
 import 'cars_state.dart';
 
-@injectable
+@lazySingleton
 class CarsBloc extends Bloc<CarsEvent, CarsState> {
   final ICarRepository _carRepository;
 

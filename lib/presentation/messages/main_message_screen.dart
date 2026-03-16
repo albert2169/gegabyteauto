@@ -4,7 +4,6 @@ import 'package:gegabyteauto/core/theme/app_colors.dart';
 import 'package:gegabyteauto/core/theme/app_text_styles.dart';
 
 @RoutePage()
-
 class MainMessageScreen extends StatelessWidget {
   const MainMessageScreen({super.key});
 
@@ -26,7 +25,7 @@ class MainMessageScreen extends StatelessWidget {
                   border: Border.all(color: AppColors.border, width: 0.5),
                 ),
                 child: const Icon(
-                  Icons.favorite_border_rounded,
+                  Icons.send,
                   color: AppColors.primary,
                   size: 36,
                 ),

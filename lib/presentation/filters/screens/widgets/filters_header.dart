@@ -27,7 +27,7 @@ class FiltersHeader extends StatelessWidget implements PreferredSizeWidget {
         icon: const Icon(Icons.close, color: Colors.white),
       ),
       title: const Text(
-        'Filters',
+        'Ֆիլտրեր',
         style: TextStyle(
           color: Colors.white,
           fontSize: 18,
@@ -49,7 +49,7 @@ class FiltersHeader extends StatelessWidget implements PreferredSizeWidget {
                 context.read<FiltersBloc>().add(const FiltersResetRequested());
               },
               child: Text(
-                'Reset',
+                'Մաքրել',
                 style: TextStyle(
                   color: AppColors.primary,
                   fontSize: 14,

@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
 import 'package:gegabyteauto/app_constants/app_constants.dart';
 import 'package:gegabyteauto/models/car_brand_view_model.dart';
 import 'package:gegabyteauto/models/car_filter_chip.dart';
@@ -9,6 +10,7 @@ import 'package:gegabyteauto/models/car_filter_chip.dart';
 import 'filters_event.dart';
 import 'filters_state.dart';
 
+@lazySingleton
 class FiltersBloc extends Bloc<FiltersEvent, FiltersState> {
   late FiltersState _initialFilterState;
 

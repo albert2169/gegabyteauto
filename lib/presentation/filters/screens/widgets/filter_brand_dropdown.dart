@@ -13,7 +13,7 @@ class FilterBrandDropdown extends StatelessWidget {
     final state = context.watch<FiltersBloc>().state;
 
     return _FilterDropdownBase(
-      label: 'Brand',
+      label: 'Մակնիշ',
       value: state.selectedBrand,
       items: state.availableBrands,
       onChanged: (value) {
@@ -84,7 +84,7 @@ class _FilterDropdownBase extends StatelessWidget {
                 DropdownMenuItem<String?>(
                   value: null,
                   child: Text(
-                    'All',
+                    'Բոլորը',
                     style:
                         TextStyle(color: Colors.white.withValues(alpha: 0.6)),
                   ),
