@@ -2,11 +2,9 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gegabyteauto/core/di/injection.dart';
-import 'package:gegabyteauto/core/router/app_router.dart';
 import 'package:gegabyteauto/core/theme/app_colors.dart';
 import 'package:gegabyteauto/core/theme/app_text_styles.dart';
 import 'package:gegabyteauto/presentation/auth/bloc/auth_bloc.dart';
-import 'package:gegabyteauto/presentation/auth/bloc/auth_event.dart';
 
 @RoutePage()
 class ProfileScreen extends StatelessWidget {
@@ -81,8 +79,8 @@ class ProfileScreen extends StatelessWidget {
         title: 'Դուրս գալ',
         isDestructive: true,
         onTap: () {
-          context.read<AuthBloc>().add(const AuthSignOutRequested());
-          context.router.replaceAll([const AuthRoute()]);
+          // context.read<AuthBloc>().add(const AuthSignOutRequested());
+          // context.router.replaceAll([const AuthRoute()]);
         },
       ),
     ];

@@ -104,6 +104,7 @@ class _AuthViewState extends State<_AuthView>
                   child: SingleChildScrollView(
                     padding: const EdgeInsets.symmetric(horizontal: 24),
                     child: ConstrainedBox(
+                      
                       constraints: BoxConstraints(
                         minHeight: MediaQuery.of(context).size.height -
                             MediaQuery.of(context).padding.top -

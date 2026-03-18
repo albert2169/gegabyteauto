@@ -27,16 +27,19 @@ class CarModelItem extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        GestureDetector(
-          onTap: onTap,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 24.0),
-            child: Text(
-              model.name,
-              style: TextStyle(
-                color: isOpen ? Colors.blue : Colors.white,
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
+        SizedBox(
+          width: double.infinity,
+          child: GestureDetector(
+            onTap: onTap,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 24.0),
+              child: Text(
+                model.name,
+                style: TextStyle(
+                  color: isOpen ? Colors.blue : Colors.white,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
             ),
           ),
